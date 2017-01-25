@@ -20,5 +20,12 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+  - Local
+    * run git bash
+    * `git clone https://github.com/HE-Arc/YC_Movies.git`
+    * `cd YC_Movies`
+    * `bundle install`
+    * `rails s`
+    * see beautiful website on localhost:3000
 
 * ...
