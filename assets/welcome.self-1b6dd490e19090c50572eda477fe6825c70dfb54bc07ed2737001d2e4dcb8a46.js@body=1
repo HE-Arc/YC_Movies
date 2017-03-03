@@ -1,0 +1,12 @@
+(function() {
+  $(window).scroll(function() {
+    if ($(document).scrollTop() > 50) {
+      $('nav').addClass('shrink');
+      $('.navbar-nav').addClass('shrink');
+    } else {
+      $('nav').removeClass('shrink');
+      $('.navbar-nav').removeClass('shrink');
+    }
+  });
+
+}).call(this);
