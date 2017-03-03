@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 15, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
 header {
   height: 100px;
@@ -67,7 +68,7 @@ header {
 }
 /* line 94, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
 #logo_navbar:hover {
-  background-image: url("Logo_anime_barre_1.gif");
+  background-image: url("http://localhost:3000/assets/Logo_anim%C3%83%C2%A9_barre_1.gif");
 }
 
 /* line 100, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
