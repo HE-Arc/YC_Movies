@@ -10,3 +10,12 @@ $(window).scroll ->
     $('nav').removeClass 'shrink'
     $('.navbar-nav').removeClass 'shrink'
   return
+
+$ ->
+  $('#logo_navbar').hover (->
+    $('#logo_gif_navbar').css 'background-image', "url('assets/Logo_anime_barre_2.gif?" + Math.random() + "')"
+  ), ->
+    $('#logo_gif_navbar').css 'background-image', ""
+  return
+
+#  ->
