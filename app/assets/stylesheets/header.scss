@@ -1,0 +1,121 @@
+@import "myvariables";
+
+header{
+  height: $mynavbar-height;
+}
+
+//********
+//
+// Naviguation bar (top)
+//
+//********
+
+
+  // Normal
+$navbar-font_size: 14px;
+
+  // Shrinked
+$shrink_height: 44px; //should not be smaller than 20
+$shrink_font_size: 14px;
+
+
+@media (max-width: 767px){
+  #logo_navbar, #logo_gif_navbar {
+    width: 170px;
+  }
+}
+
+//Pour les médias supérieur à 768 px de large
+@media(min-width: 768px){
+  .navbar-header{
+	    width: 10%;
+	}
+
+  .navbar-nav{
+    //padding-top: 40px;
+    width: 90%;
+    font-size: $navbar-font_size;
+    text-transform: uppercase;
+
+    & > li{
+      width: 100% * 1px / 6px; //soit 100% / 6
+      text-align: center;
+    }
+
+    -webkit-transition: all 1.0s ease;
+    transition: all 1.0s ease;
+
+    &.shrink {
+      min-height: $shrink_height;
+      padding-top: 0px;
+      font-size: $shrink_font_size;
+      & > li > a{
+        min-height: $shrink_height;
+        padding-top: 0.5*($shrink_height - 20);
+        padding-bottom: 0.5*($shrink_height - 20);
+      }
+    }
+  }
+}
+
+@media (min-width: 992px){
+  .navbar-nav{
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px){
+  .navbar-nav{
+    font-size: 22px;
+  }
+}
+
+
+#logo_navbar {
+  height: $mynavbar-height;
+  background-image: url("YClogo_grand_noir_SE_000000.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -40px 0px;
+  &:hover{
+    //background-image: url('Logo_anime_barre_1.gif?0.11130781722820438');
+  }
+}
+
+#logo_gif_navbar{
+  height: $mynavbar-height;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -40px 0px;
+}
+
+
+nav.navbar{
+
+   box-shadow: 0px 0px 10px 5px rgba(0,0,0,.9);
+
+   & > div{
+     max-width: 1200px;
+     margin: 0 auto;
+   }
+
+   &.shrink {
+     min-height: $shrink_height;
+
+     #logo_navbar, #logo_gif_navbar{
+       min-height: $shrink_height;
+       height: $shrink_height;
+       max-height: $shrink_height;
+       width: 70px;
+       background-position: 10px 0px;
+     }
+     & > div > div > button{
+       min-height: 34px;
+       height: 34px;
+       max-height: 34px;
+       margin-top: ($shrink_height - 34)/2;
+       margin-bottom: ($shrink_height - 34)/2;;
+     }
+  }
+}
