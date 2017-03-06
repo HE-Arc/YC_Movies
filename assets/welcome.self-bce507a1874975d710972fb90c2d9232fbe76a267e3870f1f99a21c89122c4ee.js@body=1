@@ -1,0 +1,20 @@
+(function() {
+  $(window).scroll(function() {
+    if ($(document).scrollTop() > 50) {
+      $('nav').addClass('shrink');
+      $('.navbar-nav').addClass('shrink');
+    } else {
+      $('nav').removeClass('shrink');
+      $('.navbar-nav').removeClass('shrink');
+    }
+  });
+
+  $(function() {
+    $('#logo_navbar').hover((function() {
+      return $('#logo_gif_navbar').css('background-image', "url('assets/Logo_anime.gif?" + Math.random() + "')");
+    }), function() {
+      return $('#logo_gif_navbar').css('background-image', "");
+    });
+  });
+
+}).call(this);
