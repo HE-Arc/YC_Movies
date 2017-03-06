@@ -1,0 +1,2 @@
+class Mediatype < ApplicationRecord
+end
