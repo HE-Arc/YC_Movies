@@ -1,0 +1,53 @@
+/* line 2, C:/Sites/YC_Movies/app/assets/stylesheets/galerie.scss */
+.infoonhover {
+  position: relative;
+  width: 50%;
+}
+
+/* line 7, C:/Sites/YC_Movies/app/assets/stylesheets/galerie.scss */
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+/* line 16, C:/Sites/YC_Movies/app/assets/stylesheets/galerie.scss */
+.middle {
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+/* line 26, C:/Sites/YC_Movies/app/assets/stylesheets/galerie.scss */
+.infoonhover:hover .image {
+  opacity: 0.3;
+}
+
+/* line 30, C:/Sites/YC_Movies/app/assets/stylesheets/galerie.scss */
+.infoonhover:hover .middle {
+  opacity: 1;
+}
+
+/* line 34, C:/Sites/YC_Movies/app/assets/stylesheets/galerie.scss */
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+/* line 41, C:/Sites/YC_Movies/app/assets/stylesheets/galerie.scss */
+#col-photo-video_id {
+  margin-bottom: 20px;
+}

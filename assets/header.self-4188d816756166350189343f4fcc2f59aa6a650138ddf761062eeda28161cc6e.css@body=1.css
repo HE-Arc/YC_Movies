@@ -1,0 +1,102 @@
+/* line 3, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+header {
+  height: 100px;
+}
+
+@media (max-width: 767px) {
+  /* line 22, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  #logo_navbar, #logo_gif_navbar {
+    width: 170px;
+  }
+}
+@media (min-width: 768px) {
+  /* line 29, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  .navbar-header {
+    width: 10%;
+  }
+
+  /* line 33, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  .navbar-nav {
+    width: 90%;
+    font-size: 14px;
+    text-transform: uppercase;
+    -webkit-transition: all 1.0s ease;
+    transition: all 1.0s ease;
+  }
+  /* line 39, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  .navbar-nav > li {
+    width: 16.66666667%;
+    text-align: center;
+  }
+  /* line 47, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  .navbar-nav.shrink {
+    min-height: 44px;
+    padding-top: 0px;
+    font-size: 14px;
+  }
+  /* line 51, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  .navbar-nav.shrink > li > a {
+    min-height: 44px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 61, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  .navbar-nav {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 67, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+  .navbar-nav {
+    font-size: 22px;
+  }
+}
+/* line 73, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+#logo_navbar {
+  height: 100px;
+  background-image: url("YClogo_grand_noir_SE_000000.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -40px 0px;
+}
+
+/* line 81, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+#logo_gif_navbar {
+  height: 100px;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -40px 0px;
+}
+
+/* line 90, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+nav.navbar {
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.9);
+}
+/* line 93, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+nav.navbar > div {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* line 98, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+nav.navbar.shrink {
+  min-height: 44px;
+}
+/* line 101, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+nav.navbar.shrink #logo_navbar, nav.navbar.shrink #logo_gif_navbar {
+  min-height: 44px;
+  height: 44px;
+  max-height: 44px;
+  width: 70px;
+  background-position: 10px 0px;
+}
+/* line 108, C:/Sites/YC_Movies/app/assets/stylesheets/header.scss */
+nav.navbar.shrink > div > div > button {
+  min-height: 34px;
+  height: 34px;
+  max-height: 34px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

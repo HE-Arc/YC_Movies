@@ -1,0 +1,27 @@
+(function() {
+  jQuery.fn.ready = function(fn) {
+    return $(this).on('turbolinks:load', fn);
+  };
+
+  $(function() {
+    $('#logo_navbar').hover(function() {
+      $('#logo_gif_navbar').css('background-image', "url('assets/Logo_anime.gif?" + Math.random() + "')");
+      return setTimeout(function() {
+        $('#logo_gif_navbar').css('background-image', "");
+      }, 2200);
+    }, function() {
+      return $('#logo_gif_navbar').css('background-image', "");
+    });
+  });
+
+  $(window).scroll(function() {
+    if ($(document).scrollTop() > 50) {
+      $('nav').addClass('shrink');
+      $('.navbar-nav').addClass('shrink');
+    } else {
+      $('nav').removeClass('shrink');
+      $('.navbar-nav').removeClass('shrink');
+    }
+  });
+
+}).call(this);

@@ -1,0 +1,134 @@
+/* line 24, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+.prestations-div-home {
+  padding: 0 !important;
+}
+
+/* line 28, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+.prestations {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 736px 200px;
+  min-height: 200px;
+  height: 200px;
+  display: block;
+}
+
+/* line 37, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+#prestations_1 {
+  background-image: url("http://lorempixel.com/736/200/");
+}
+
+/* line 41, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+#prestations_2 {
+  background-image: url("http://lorempixel.com/736/200/");
+}
+
+/* line 45, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+#prestations_3 {
+  background-image: url("http://lorempixel.com/736/200/");
+}
+
+/* line 49, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+#prestations_4 {
+  background-image: url("mariage_736x200.jpg");
+}
+
+/* line 53, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+#prestations_5 {
+  background-image: url("http://lorempixel.com/736/200/");
+}
+
+@media (min-width: 768px) {
+  /* line 58, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  .prestations {
+    background-size: 640px 200px;
+  }
+
+  /* line 62, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_1 {
+    background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  /* line 66, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_2 {
+    background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  /* line 70, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_3 {
+    background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  /* line 74, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_4 {
+    background-image: url("mariage_640x200.jpg");
+  }
+
+  /* line 78, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_5 {
+    background-image: url("http://lorempixel.com/992/200/");
+    background-size: 992px 200px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 85, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  .prestations {
+    background-size: 288px 200px;
+  }
+
+  /* line 89, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_1 {
+    background-image: url("http://lorempixel.com/288/200/");
+  }
+
+  /* line 93, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_2 {
+    background-image: url("http://lorempixel.com/288/200/");
+  }
+
+  /* line 97, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_3 {
+    background-image: url("http://lorempixel.com/288/200/");
+  }
+
+  /* line 101, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_4 {
+    background-image: url("mariage_288x200.jpg");
+  }
+
+  /* line 105, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_5 {
+    background-image: url("http://lorempixel.com/288/200/");
+  }
+}
+@media (min-width: 1442px) {
+  /* line 111, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  .prestations {
+    background-size: 640px 200px;
+  }
+
+  /* line 115, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_1 {
+    background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  /* line 119, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_2 {
+    background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  /* line 123, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_3 {
+    background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  /* line 127, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_4 {
+    background-image: url("mariage_640x200.jpg");
+  }
+
+  /* line 131, C:/Sites/YC_Movies/app/assets/stylesheets/welcome.scss */
+  #prestations_5 {
+    background-image: url("http://lorempixel.com/640/200/");
+  }
+}

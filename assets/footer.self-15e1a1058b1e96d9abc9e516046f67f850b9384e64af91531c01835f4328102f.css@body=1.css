@@ -1,0 +1,9 @@
+/* line 2, C:/Sites/YC_Movies/app/assets/stylesheets/footer.scss */
+footer > div {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* line 6, C:/Sites/YC_Movies/app/assets/stylesheets/footer.scss */
+footer > div div {
+  background-color: #1c1e22;
+}
