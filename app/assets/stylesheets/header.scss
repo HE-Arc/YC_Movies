@@ -10,7 +10,6 @@ header{
 //
 //********
 
-
   // Normal
 $navbar-font_size: 14px;
 
@@ -77,9 +76,6 @@ $shrink_font_size: 14px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: -40px 0px;
-  &:hover{
-    //background-image: url('Logo_anime_barre_1.gif?0.11130781722820438');
-  }
 }
 
 #logo_gif_navbar{
@@ -92,7 +88,6 @@ $shrink_font_size: 14px;
 
 
 nav.navbar{
-
    box-shadow: 0px 0px 10px 5px rgba(0,0,0,.9);
 
    & > div{
