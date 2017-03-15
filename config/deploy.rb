@@ -2,10 +2,10 @@
 lock "3.8.0"
 
 set :application, "YC_Movies"
-set :repo_url, "git@github.com/HE-Arc/YC_Movies.git"
+set :repo_url, "https://github.com/HE-Arc/YC_Movies"
 
 # Default branch is :master
- ask :branch, 'youtube-gem'
+ ask :branch, 'youtube_gem'
 
 # Default deploy_to directory is /var/www/my_app_name
  set :deploy_to, '/home/bastien/www/YC_Movies'
