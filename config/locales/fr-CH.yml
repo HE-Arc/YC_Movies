@@ -1,0 +1,8 @@
+fr-CH:
+  activerecord:
+    models:
+      prestation_order: Dude
+    attributes:
+      prestation_order:
+        name: "Nom"
+        firstname: "Prénom"

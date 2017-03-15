@@ -9,7 +9,7 @@ jQuery.fn.ready = (fn)->
 #$(document).on 'turbolinks:load', ->
 $ ->
   $('#logo_navbar').hover ->
-    $('#logo_gif_navbar').css 'background-image', "url('assets/Logo_anime.gif?" + Math.random() + "')"
+    $('#logo_gif_navbar').css 'background-image', "url('assets/Logo_anime_trans.gif?" + Math.random() + "')"
     setTimeout ->
       $('#logo_gif_navbar').css 'background-image', ""
       return

@@ -1,0 +1,176 @@
+<h2> Détails de la prestation </h2>
+
+<div class="row">
+  <div class="col-xs-60 col-sm-60 col-md-28">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2> Généralités </h2>
+      </div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <%= f.label :name , "Nom *", :class => "control-label col-xs-20"%>
+
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <%= f.text_field :name, {:placeholder => "Nom", :class => "form-control"} %>
+
+          </div>
+        </div>
+<!--
+        <div class="form-group">
+          <label for="inputPrenom" class="control-label col-xs-20">Prénom *</label>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEntreprise" class="control-label col-xs-20">Nom entreprise</label>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-briefcase"></span></span>
+            <input type="text" class="form-control" id="inputEntreprise" placeholder="Nom de l'entreprise">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail" class="control-label col-xs-20">E-mail *</label>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-send"></span></span>
+            <input type="email" class="form-control" id="inputEmail" placeholder="email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputTel" class="control-label col-xs-20">N° de téléphone *</label>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+            <input type="tel" class="form-control" id="inputTel" placeholder="0041...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPlace" class="control-label col-xs-20"> Lieu du déroulement du projet, type d'accès (voiture, bus), etc...  * </label>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+            <textarea class="form-control" id="inputPlace" placeholder="près du chêne au centre du village, en voiture se parker 50m en direction de ..." rows="5"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputAvailabilities" class="control-label col-xs-20"> Disponibilités pour un éventuel rendez-vous * </label>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            <textarea class="form-control" id="inputAvailabilities" placeholder="vendredi 6 décembre, dès 18h ou mercredi 11 décembre le matin ..." rows="5"></textarea>
+          </div>
+        </div>
+-->
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-60 col-sm-60 col-md-28 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2> Projet </h2>
+      </div>
+      <div class="panel-body">
+<!--
+        <div class="form-group">
+          <label for="inputNom" class="control-label col-xs-15">Nom *</label>
+          <div class="input-group col-xs-45">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" id="inputNom" placeholder="Nom">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPrenom" class="control-label col-xs-15">Prénom *</label>
+          <div class="input-group col-xs-45">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPrenom" class="control-label col-xs-15">Nom entreprise</label>
+          <div class="input-group col-xs-45">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom">
+          </div>
+        </div>
+-->
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="field">
+  <%= f.label :firstname %>
+  <%= f.text_field :firstname %>
+</div>
+
+<div class="field">
+  <%= f.label :entreprise %>
+  <%= f.text_field :entreprise %>
+</div>
+
+<div class="field">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</div>
+
+<div class="field">
+  <%= f.label :tel %>
+  <%= f.text_field :tel %>
+</div>
+
+<div class="field">
+  <%= f.label :place %>
+  <%= f.text_area :place %>
+</div>
+
+<div class="field">
+  <%= f.label :availabilities %>
+  <%= f.text_area :availabilities %>
+</div>
+
+<div class="field">
+  <%= f.label :typeofproduct %>
+  <%= f.text_field :typeofproduct %>
+</div>
+
+<div class="field">
+  <%= f.label :product %>
+  <%= f.text_area :product %>
+</div>
+
+<div class="field">
+  <%= f.label :length %>
+  <%= f.time_select :length %>
+</div>
+
+<div class="field">
+  <%= f.label :interview %>
+  <%= f.text_field :interview %>
+</div>
+
+<div class="field">
+  <%= f.label :month %>
+  <%= f.text_field :month %>
+</div>
+
+<div class="field">
+  <%= f.label :day %>
+  <%= f.number_field :day %>
+</div>
+
+<div class="field">
+  <%= f.label :other %>
+  <%= f.text_area :other %>
+</div>

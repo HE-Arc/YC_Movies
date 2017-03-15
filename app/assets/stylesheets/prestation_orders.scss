@@ -1,0 +1,125 @@
+// Place all the styles related to the PrestationOrders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+#prestation_1_choose_theme {
+background-image: url("http://lorempixel.com/736/200/");
+}
+
+#prestation_2_choose_theme {
+background-image: url("http://lorempixel.com/736/200/");
+}
+
+#prestation_3_choose_theme {
+background-image: url("http://lorempixel.com/736/200/");
+}
+
+#prestation_4_choose_theme {
+background-image: url("mariage_736x200.jpg");
+}
+
+#prestation_5_choose_theme {
+background: url("http://lorempixel.com/736/200/");
+}
+
+.prestations-div-home{
+  padding: 0 !important;
+}
+
+.prestations_choose_theme{
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 736px 200px;
+  min-height: 200px;
+  height: 200px;
+  display: block;
+  width: 100%;
+}
+
+
+@media (min-width: 768px){
+  .prestations_choose_theme{
+    background-size: 640px 200px;
+  }
+
+  #prestation_1_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_2_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_3_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_4_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_5_choose_theme {
+  background: url("http://lorempixel.com/640/200/");
+  }
+}
+
+@media (min-width: 992px){
+  .prestations_choose_theme{
+    background-size: 288px 200px;
+  }
+
+  #prestation_1_choose_theme {
+  background-image: url("http://lorempixel.com/288/200/");
+  }
+
+  #prestation_2_choose_theme {
+  background-image: url("http://lorempixel.com/288/200/");
+  }
+
+  #prestation_3_choose_theme {
+  background-image: url("http://lorempixel.com/288/200/");
+  }
+
+  #prestation_4_choose_theme {
+  background-image: url("http://lorempixel.com/288/200/");
+  }
+
+  #prestation_5_choose_theme {
+  background: url("http://lorempixel.com/288/200/");
+  }
+}
+
+@media (min-width: 1442px){
+  .prestations_choose_theme{
+    background-size: 640px 200px;
+  }
+
+  #prestation_1_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_2_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_3_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_4_choose_theme {
+  background-image: url("http://lorempixel.com/640/200/");
+  }
+
+  #prestation_5_choose_theme {
+  background: url("http://lorempixel.com/640/200/");
+  }
+}
+
+//form 2cd step 
+
+.form-group{
+  padding: 0 10px;
+}
