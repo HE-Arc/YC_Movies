@@ -28,4 +28,8 @@ class PrestationOrder < ApplicationRecord
 		current_step == steps.last
 	end
 
+	def typesofproduct
+		%w[Passion Fête Commercial Mariage Artistique]
+	end
+
 end
