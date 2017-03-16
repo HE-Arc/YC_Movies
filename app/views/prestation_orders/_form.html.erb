@@ -1,0 +1,27 @@
+<div class="container">
+
+
+<%= form_for(prestation_order, html: {class: "form-horizontal"}) do |f|  %>
+  <% if prestation_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prestation_order.errors.count, "error") %> prohibited this prestation_order from being saved:</h2>
+
+      <ul>
+      <% prestation_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= render 'prestation_orders/'+prestation_order.current_step, :f => f %>
+
+
+  <div class="actions">
+    <%= f.submit "Continue" unless @prestation_order.first_step? %>
+    <%= f.submit "Back", :name => "back_button" unless @prestation_order.first_step? %>
+  </div>
+<% end %>
+
+</div>

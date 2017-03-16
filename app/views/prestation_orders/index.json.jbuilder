@@ -1,0 +1,1 @@
+json.array! @prestation_orders, partial: 'prestation_orders/prestation_order', as: :prestation_order

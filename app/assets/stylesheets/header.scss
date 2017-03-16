@@ -1,0 +1,152 @@
+@import "myvariables";
+
+
+
+//********
+//
+// Naviguation bar (top)
+//
+//********
+
+  // Normal
+$navbar-font_size: 14px;
+
+  // Shrinked
+$shrink_height: 44px; //should not be smaller than 20
+$shrink_font_size: 14px;
+
+header{
+  height: $shrink_height;
+}
+
+@media (min-width:992px) {
+  header{
+    height: $mynavbar-height;
+  }
+}
+
+#logo_navbar {
+  height: $mynavbar-height;
+  background-image: url( asset_path("YClogo_grand_noir_SE_000000(2).png") );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -40px 0px;
+  -webkit-transition: all 1.0s ease;
+  transition: all 1.0s ease;
+}
+
+#logo_gif_navbar{
+  height: $mynavbar-height;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -40px 0px;
+}
+
+nav.yc-navbar{
+   box-shadow: 0px 0px 10px 5px rgba(0,0,0,.9);
+   -webkit-transition: all 1.0s ease;
+   transition: all 1.0s ease;
+
+   & > div{
+     max-width: 1200px;
+     margin: 0 auto;
+   }
+
+
+   & > div > div > button{
+     min-height: 34px;
+     height: 34px;
+     max-height: 34px;
+     margin-top: ($shrink_height - 34)/2;
+     margin-bottom: ($shrink_height - 34)/2;;
+   }
+}
+
+.yc-navbar-nav{
+  width: 90%;
+  padding-top: 0px;
+  text-transform: uppercase;
+
+  & > li{
+    width: 100% * 1px / 6px; //soit 100% / 6
+    text-align: center;
+  }
+}
+
+
+
+//Pour les médias inférieurs à 992 px de large
+@media(max-width: 991px){
+
+  #logo_navbar, #logo_gif_navbar{
+    min-height: $shrink_height;
+    height: $shrink_height;
+    max-height: $shrink_height;
+    width: 70px;
+    background-position: 10px 0px;
+  }
+
+  nav.yc-navbar{
+    min-height: $shrink_height;
+  }
+
+  .yc-navbar-nav{
+    min-height: $shrink_height;
+
+    & > li > a{
+      min-height: $shrink_height !important;
+      padding-top: 0.5*($shrink_height - 20) !important;
+      padding-bottom: 0.5*($shrink_height - 20) !important;
+    }
+  }
+}
+
+//Pour les médias supérieurs à 768 px de large
+@media(min-width:768px){
+  .navbar-header{
+	    width: 10%;
+	}
+}
+
+//Pour les médias supérieurs à 992 px de large
+@media(min-width: 992px){
+
+  nav.yc-navbar.shrink{
+    min-height: $shrink_height;
+
+    #logo_navbar, #logo_gif_navbar{
+      min-height: $shrink_height;
+      height: $shrink_height;
+      max-height: $shrink_height;
+      width: 70px;
+      background-position: 10px 0px;
+    }
+
+  }
+
+  .yc-navbar-nav{
+    font-size: 18px;
+
+    //navbar shrink animation
+    -webkit-transition: all 1.0s ease;
+    transition: all 1.0s ease;
+    &.shrink {
+      min-height: $shrink_height;
+      padding-top: 0px;
+      font-size: $shrink_font_size;
+      & > li > a{
+        min-height: $shrink_height;
+        padding-top: 0.5*($shrink_height - 20);
+        padding-bottom: 0.5*($shrink_height - 20);
+      }
+    }
+  }
+}
+
+//Pour les médias supérieurs à 1200 px de large
+@media (min-width: 1200px){
+  .yc-navbar-nav{
+    font-size: 22px;
+  }
+}

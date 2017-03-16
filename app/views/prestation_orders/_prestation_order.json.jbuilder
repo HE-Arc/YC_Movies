@@ -1,0 +1,2 @@
+json.extract! prestation_order, :id, :name, :firstname, :entreprise, :email, :tel, :place, :availabilities, :typeofproduct, :product, :length, :interview, :month, :day, :other, :created_at, :updated_at
+json.url prestation_order_url(prestation_order, format: :json)

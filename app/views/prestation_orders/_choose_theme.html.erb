@@ -1,0 +1,28 @@
+<h2> Choix du thème </h2>
+
+<div class="container">
+  <div class="row">
+    <%= f.hidden_field :typeofproduct, value: "" %>
+
+    <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+      <%= f.submit "Passion" , {:id => "prestation_1_choose_theme", :class => "prestations_choose_theme"} %>
+    </div>
+
+    <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+      <%= f.submit "Fête" , {:id => "prestation_2_choose_theme", :class => "prestations_choose_theme"} %>
+    </div>
+
+    <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+      <%= f.submit "Commercial" , {:id => "prestation_3_choose_theme", :class => "prestations_choose_theme"} %>
+    </div>
+
+    <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+      <%= f.submit "Mariage", {:id => "prestation_4_choose_theme", :class => "prestations_choose_theme"} %>
+    </div>
+
+    <div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
+      <%= f.submit "Artistique", {:id => "prestation_5_choose_theme", :class => "prestations_choose_theme"} %>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,1 @@
+json.partial! "prestation_orders/prestation_order", prestation_order: @prestation_order

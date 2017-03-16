@@ -1,0 +1,54 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+//general
+//$body-bg: $grey
+//$panel-bg: #222
+//$panel-default-heading-bg: $black
+//$brand-primary: $blue
+//$component-active-color: $white
+
+//navbar
+
+//$navbar-default-color: $grey
+
+//$navbar-default-link-active-color: $white
+//$navbar-default-link-hover-color: $white*/
+
+// grid system
+$grid-columns: 60
+
+// Import boostrap-sprockets
+@import "bootstrap-sprockets"
+
+// First set or import your overrides
+@import "myvariables"
+@import "generalrules"
+$navbar-height: $mynavbar_height
+$navbar-default-bg: $black_brighter
+//$panel-default-heading-bg:
+
+
+// Import slate theme variables
+@import "bootswatch/slate/variables"
+
+// Import boostrap
+@import "bootstrap"
+
+// And finally bootswatch style itself
+@import "bootswatch/slate/bootswatch"
