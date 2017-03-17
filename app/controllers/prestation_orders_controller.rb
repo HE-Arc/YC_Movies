@@ -51,12 +51,23 @@ class PrestationOrdersController < ApplicationController
 
     session[:prestation_order_step] = @prestation_order.current_step
 
-    if @prestation_order.new_record?
-      render "new"
-    else
-      session[:prestation_order_step] = session[:prestation_order_params] = nil
-      flash[:notice] = "Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais"
-      redirect_to @prestation_order
+    #if @prestation_order.new_record?
+    #  render "new"
+    #else
+    #  session[:prestation_order_step] = session[:prestation_order_params] = nil
+    #  flash[:notice] = "Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais"
+    #  redirect_to @prestation_order
+    #end
+
+    respond_to do |format|
+      if @prestation_order.new_record?
+        format.html { render :new }
+        format.json { render json: @prestation_order.errors, status: :unprocessable_entity }
+      else
+        session[:prestation_order_step] = session[:prestation_order_params] = nil
+        format.html { redirect_to @prestation_order, notice: 'Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais.' }
+        format.json { render :show, status: :created, location: @prestation_order }
+      end
     end
 
     #respond_to do |format|
