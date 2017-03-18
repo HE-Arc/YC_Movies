@@ -9,13 +9,14 @@ jQuery.fn.ready = (fn)->
 #$(document).on 'turbolinks:load', ->
 $ ->
   $('#logo_navbar').hover ->
-    $('#logo_gif_navbar').css 'background-image', "url('assets/Logo_anime_trans.gif?" + Math.random() + "')"
+    new_background_image_value = 'url( <%= asset_path("Logo_anime_trans.gif") %>?'+ Math.random() + ')'
+    $('#logo_gif_navbar').css 'background-image', new_background_image_value
     setTimeout ->
       $('#logo_gif_navbar').css 'background-image', ""
       return
     , 2200
   , ->
-    $('#logo_gif_navbar').css 'background-image', ""
+    #$('#logo_gif_navbar').css 'background-image', ""
   return
 
 

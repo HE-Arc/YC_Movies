@@ -18,7 +18,7 @@ background-image: url("http://lorempixel.com/736/200/");
 }
 
 #prestation_4_choose_theme {
-background-image: url("mariage_736x200.jpg");
+background-image: url(asset-path("mariage_736x200.jpg"));
 }
 
 #prestation_5_choose_theme {
@@ -118,7 +118,7 @@ background: url("http://lorempixel.com/736/200/");
   }
 }
 
-//form 2cd step 
+//form 2cd step
 
 .form-group{
   padding: 0 10px;
