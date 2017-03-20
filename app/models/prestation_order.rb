@@ -1,31 +1,31 @@
 class PrestationOrder < ApplicationRecord
 	attr_writer :current_step
 
-	validates_presence_of :name, :if => lambda { |o| o.current_step == "choose_details" }
-	validates_presence_of :firstname, :if => lambda { |o| o.current_step == "choose_details" }
+	validates_presence_of :name, :if => lambda { |o| o.current_step == 2 }
+	validates_presence_of :firstname, :if => lambda { |o| o.current_step == 2 }
 
 	def current_step
-		@current_step || steps.first
-	end
-
-	def steps
-		%w[choose_theme choose_details see_and_confirm]
+		@current_step || 1
 	end
 
 	def next_step
-		self.current_step = steps[steps.index(current_step)+1]
+		self.current_step += 1
 	end
 
 	def previous_step
-		self.current_step = steps[steps.index(current_step)-1]
+		self.current_step -= 1
 	end
 
 	def first_step?
-		current_step == steps.first
+		current_step == 1
 	end
 
-	def last_step?
-		current_step == steps.last
+	def second_step?
+		current_step == 2
+	end
+
+	def third_step?
+		current_step == 3
 	end
 
 	def typesofproduct

@@ -9,3 +9,8 @@
   <strong> Prénom : </strong>
   <%=h @prestation_order.firstname %>
 </p>
+
+<div class="actions">
+  <%= f.submit "Continue" %>
+  <%= f.submit "Back", :name => "back_button" %>
+</div>

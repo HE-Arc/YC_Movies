@@ -12,12 +12,29 @@ class PrestationOrdersController < ApplicationController
   def show
   end
 
-  # GET /prestation_orders/new
+  # GET /prestation_orders/new/step:step_number
   def new
+
+    current_step_session = session[:prestation_order_step] || 1
+    if params[:step_number] != current_step_session.to_s
+      redirect_to action: :new, step_number: current_step_session.to_s
+    end
 
     session[:prestation_order_params] ||= {}
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
-    @prestation_order.current_step = session[:prestation_order_step]
+    @prestation_order.current_step = current_step_session
+    @step_number = current_step_session.to_s
+
+    logger.debug "1 error (before valid?) : #{@prestation_order.errors.full_messages}"
+
+    #generate errors if redirected after post with errors
+    if params[:has_error]
+      @prestation_order.valid?
+    end
+    logger.debug "2 error (after valid?) : #{@prestation_order.errors.full_messages}"
+
+
+
   end
 
   # GET /prestation_orders/1/edit
@@ -31,54 +48,43 @@ class PrestationOrdersController < ApplicationController
 
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
 
-    @prestation_order.current_step = session[:prestation_order_step]
+    @prestation_order.current_step = session[:prestation_order_step] || 1
 
     if @prestation_order.first_step?
-      @prestation_order.typeofproduct = params[:commit]
+      session[:prestation_order_params][:typeofproduct] = params[:commit]
     end
 
-
+    valid = true
     if params[:back_button]
       @prestation_order.previous_step
+      session[:prestation_order_step] = @prestation_order.current_step
     elsif @prestation_order.valid?
-      if @prestation_order.last_step?
+      if @prestation_order.third_step?
         @prestation_order.save
+
       else
         @prestation_order.next_step
+        session[:prestation_order_step] = @prestation_order.current_step
       end
+    else
+      valid = false
     end
-
-
-    session[:prestation_order_step] = @prestation_order.current_step
-
-    #if @prestation_order.new_record?
-    #  render "new"
-    #else
-    #  session[:prestation_order_step] = session[:prestation_order_params] = nil
-    #  flash[:notice] = "Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais"
-    #  redirect_to @prestation_order
-    #end
 
     respond_to do |format|
       if @prestation_order.new_record?
-        format.html { render :new }
-        format.json { render json: @prestation_order.errors, status: :unprocessable_entity }
+        if valid
+          format.html { redirect_to action: :new, step_number: @prestation_order.current_step }
+        else
+          format.html { redirect_to action: :new, step_number: @prestation_order.current_step, has_error: true }
+          format.json { render json: @prestation_order.errors, status: :unprocessable_entity }
+        end
       else
+        #reset des informations car le formulaire a été enregistré (save)
         session[:prestation_order_step] = session[:prestation_order_params] = nil
         format.html { redirect_to @prestation_order, notice: 'Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais.' }
         format.json { render :show, status: :created, location: @prestation_order }
       end
     end
-
-    #respond_to do |format|
-    #  if @prestation_order.save
-    #    format.html { redirect_to @prestation_order, notice: 'Prestation order was successfully created.' }
-    #    format.json { render :show, status: :created, location: @prestation_order }
-    #  else
-    #    format.html { render :new }
-    #    format.json { render json: @prestation_order.errors, status: :unprocessable_entity }
-    #  end
-    #end
 
 
   end
