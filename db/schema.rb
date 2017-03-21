@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170321192327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "media", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "createdat"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "mediatype_id"
+    t.integer  "categories_id"
+    t.index ["categories_id"], name: "index_media_on_categories_id", using: :btree
+    t.index ["mediatype_id"], name: "index_media_on_mediatype_id", using: :btree
+    t.index ["url"], name: "index_media_on_url", using: :btree
+  end
+
+  create_table "mediatypes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "media", "categories", column: "categories_id"
+  add_foreign_key "media", "mediatypes"
 end
