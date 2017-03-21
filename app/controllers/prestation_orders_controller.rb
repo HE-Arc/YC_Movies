@@ -1,5 +1,6 @@
 class PrestationOrdersController < ApplicationController
   before_action :set_prestation_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_headers, only: [:index, :show, :new, :edit]
 
   # GET /prestation_orders
   # GET /prestation_orders.json
@@ -14,10 +15,11 @@ class PrestationOrdersController < ApplicationController
 
   # GET /prestation_orders/new/step:step_number
   def new
-
+    session[:max_step_reached] = 1 unless session[:max_step_reached]
     current_step_session = session[:prestation_order_step] || 1
-    if params[:step_number].to_i > current_step_session
-      redirect_to action: :new, step_number: current_step_session.to_s
+
+    if params[:step_number].to_i > session[:max_step_reached]
+      redirect_to action: :new, step_number: session[:max_step_reached].to_s
     elsif params[:step_number].to_i < current_step_session
       session[:prestation_order_step] = params[:step_number].to_i
     end
@@ -25,14 +27,11 @@ class PrestationOrdersController < ApplicationController
     session[:prestation_order_params] ||= {}
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
     @prestation_order.current_step = params[:step_number].to_i
-    @step_number = params[:step_number]
 
-    logger.debug "1 error (before valid?) : #{@prestation_order.errors.full_messages}"
-    #generate errors if redirected after post with errors
+    #generate errors if redirected from 'create' (POST) with errors
     if params[:has_error]
       @prestation_order.valid?
     end
-    logger.debug "2 error (after valid?) : #{@prestation_order.errors.full_messages}"
 
   end
 
@@ -44,6 +43,7 @@ class PrestationOrdersController < ApplicationController
   # POST /prestation_orders.json
   def create
     session[:prestation_order_params].deep_merge!(prestation_order_params) if prestation_order_params
+    session[:max_step_reached] = 1 unless session[:max_step_reached]
 
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
 
@@ -66,6 +66,7 @@ class PrestationOrdersController < ApplicationController
       else
         @prestation_order.next_step
         session[:prestation_order_step] = @prestation_order.current_step
+        session[:max_step_reached] += 1
       end
     else
       valid = false
@@ -82,7 +83,7 @@ class PrestationOrdersController < ApplicationController
       else
         if captcha_success
           #reset des informations car le formulaire a été enregistré (save)
-          session[:prestation_order_step] = session[:prestation_order_params] = nil
+          session[:prestation_order_step] = session[:prestation_order_params] = session[:max_step_reached] = nil
           format.html { redirect_to @prestation_order, notice: 'Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais.' }
           format.json { render :show, status: :created, location: @prestation_order }
         else
@@ -123,6 +124,13 @@ class PrestationOrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_prestation_order
       @prestation_order = PrestationOrder.find(params[:id])
+    end
+
+    # Set headers so that prestation pages can't be cached
+    def set_headers
+      response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+      response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+      response.headers["Expires"] = "0" # Proxies.
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

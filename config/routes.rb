@@ -5,5 +5,4 @@ Rails.application.routes.draw do
  
   root 'welcome#index'
   get '/galerie' => 'galerie#index'
-  get '/prestations' => 'prestations#index'
 end
