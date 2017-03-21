@@ -16,24 +16,23 @@ class PrestationOrdersController < ApplicationController
   def new
 
     current_step_session = session[:prestation_order_step] || 1
-    if params[:step_number] != current_step_session.to_s
+    if params[:step_number].to_i > current_step_session
       redirect_to action: :new, step_number: current_step_session.to_s
+    elsif params[:step_number].to_i < current_step_session
+      session[:prestation_order_step] = params[:step_number].to_i
     end
 
     session[:prestation_order_params] ||= {}
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
-    @prestation_order.current_step = current_step_session
-    @step_number = current_step_session.to_s
+    @prestation_order.current_step = params[:step_number].to_i
+    @step_number = params[:step_number]
 
     logger.debug "1 error (before valid?) : #{@prestation_order.errors.full_messages}"
-
     #generate errors if redirected after post with errors
     if params[:has_error]
       @prestation_order.valid?
     end
     logger.debug "2 error (after valid?) : #{@prestation_order.errors.full_messages}"
-
-
 
   end
 
@@ -55,13 +54,15 @@ class PrestationOrdersController < ApplicationController
     end
 
     valid = true
+    captcha_success = false
     if params[:back_button]
       @prestation_order.previous_step
       session[:prestation_order_step] = @prestation_order.current_step
     elsif @prestation_order.valid?
       if @prestation_order.third_step?
-        @prestation_order.save
-
+        if verify_recaptcha(model: @prestation_order) && @prestation_order.save
+          captcha_success = true
+        end
       else
         @prestation_order.next_step
         session[:prestation_order_step] = @prestation_order.current_step
@@ -79,10 +80,15 @@ class PrestationOrdersController < ApplicationController
           format.json { render json: @prestation_order.errors, status: :unprocessable_entity }
         end
       else
-        #reset des informations car le formulaire a été enregistré (save)
-        session[:prestation_order_step] = session[:prestation_order_params] = nil
-        format.html { redirect_to @prestation_order, notice: 'Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais.' }
-        format.json { render :show, status: :created, location: @prestation_order }
+        if captcha_success
+          #reset des informations car le formulaire a été enregistré (save)
+          session[:prestation_order_step] = session[:prestation_order_params] = nil
+          format.html { redirect_to @prestation_order, notice: 'Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais.' }
+          format.json { render :show, status: :created, location: @prestation_order }
+        else
+          format.html { redirect_to action: :new, step_number: @prestation_order.current_step, has_error: true }
+          format.json { render json: @prestation_order.errors, status: :unprocessable_entity }
+        end
       end
     end
 

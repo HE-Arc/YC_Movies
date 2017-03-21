@@ -13,6 +13,12 @@ gem 'jquery-turbolinks'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'pg'
 
+#for captcha
+gem "recaptcha", require: "recaptcha/rails"
+group :development do
+    gem 'certified', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+end
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

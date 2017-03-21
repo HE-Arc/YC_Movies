@@ -10,6 +10,8 @@
   <%=h @prestation_order.firstname %>
 </p>
 
+<%= recaptcha_tags %>
+
 <div class="actions">
   <%= f.submit "Continue" %>
   <%= f.submit "Back", :name => "back_button" %>
