@@ -8,4 +8,5 @@
 Category.delete_all
 Category.create("Mariage Passion Artistique Fete Commercial".split.map { |name| {name: name} })
 Mediatype.delete_all
-Mediatype.create("Image Video".split.map { |name| {name: name} })
+#Mediatype.create("Image Video".split.map { |name| {name: name} })
+Mediatype.create(%w(Image Vidéo) .map { |name| {name: name} })
