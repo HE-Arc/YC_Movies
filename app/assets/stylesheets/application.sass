@@ -14,21 +14,38 @@
  *= require_self
  */
 
-@import "myvariables"
-
-
-
-$navbar-padding-vertical: 20px
-$navbar-height: $mynavbar_height
-$navbar-default-bg: #000000
-$navbar-default-color: #8f9399
-
-$navbar-default-link-active-color: #ffffff
-$navbar-default-link-hover-color: #eeeeee
-
 // grid system
-$grid-columns: 10
+$grid-columns: 60
 
-
+// Import boostrap-sprockets
 @import "bootstrap-sprockets"
+
+
+// First set or import your overrides
+@import "myvariables"
+@import "generalrules"
+
+//  navbar
+$navbar-height: $mynavbar_height
+$navbar-default-bg: $black_brighter
+//$navbar-default-color: $grey
+//$navbar-default-link-active-color: $white
+//$navbar-default-link-hover-color: $white*/
+
+//    general
+//$body-bg: $grey
+//$panel-bg: #222
+//$panel-default-heading-bg: $black
+//$brand-primary: $blue
+//$component-active-color: $white
+//$panel-default-heading-bg:
+
+
+// Import slate theme variables
+@import "bootswatch/slate/variables"
+
+// Import boostrap
 @import "bootstrap"
+
+// And finally bootswatch style itself
+@import "bootswatch/slate/bootswatch"

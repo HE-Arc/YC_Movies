@@ -9,9 +9,15 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+// not required (turbolinks causing problems qith jquery and patch jquery.turbolinks not working)
+
+
+
+
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require turbolinks
 //= require_tree .

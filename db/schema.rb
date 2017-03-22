@@ -41,6 +41,25 @@ ActiveRecord::Schema.define(version: 20170321192327) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prestation_orders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "firstname"
+    t.string   "entreprise"
+    t.string   "email"
+    t.string   "tel"
+    t.text     "place"
+    t.text     "availabilities"
+    t.string   "typeofproduct"
+    t.text     "product"
+    t.time     "length"
+    t.string   "interview"
+    t.string   "month"
+    t.integer  "day"
+    t.text     "other"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   add_foreign_key "media", "categories", column: "categories_id"
   add_foreign_key "media", "mediatypes"
 end

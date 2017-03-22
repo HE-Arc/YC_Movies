@@ -1,0 +1,18 @@
+<h2> Récapitulatif et confirmation de la prestation </h2>
+
+<p>
+  <strong> Nom : </strong>
+  <%=h @prestation_order.name %>
+</p>
+
+<p>
+  <strong> Prénom : </strong>
+  <%=h @prestation_order.firstname %>
+</p>
+
+<%= recaptcha_tags %>
+
+<div class="actions">
+  <%= f.submit "Continue" %>
+  <%= f.submit "Back", :name => "back_button" %>
+</div>

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  firstname: MyString
+  entreprise: MyString
+  email: MyString
+  tel: MyString
+  place: MyText
+  availabilities: MyText
+  typeofproduct: MyString
+  product: MyText
+  length: 2017-03-13 16:04:43
+  interview: MyString
+  month: MyString
+  day: 1
+  other: MyText
+
+two:
+  name: MyString
+  firstname: MyString
+  entreprise: MyString
+  email: MyString
+  tel: MyString
+  place: MyText
+  availabilities: MyText
+  typeofproduct: MyString
+  product: MyText
+  length: 2017-03-13 16:04:43
+  interview: MyString
+  month: MyString
+  day: 1
+  other: MyText

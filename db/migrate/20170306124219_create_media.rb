@@ -4,7 +4,6 @@ class CreateMedia < ActiveRecord::Migration[5.0]
         t.string :name
         t.string :url
         t.text :description
-        t.datetime :createdat
         t.timestamps
     end
     add_index :media,:url
