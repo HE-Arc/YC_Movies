@@ -15,7 +15,7 @@ class PrestationOrdersController < ApplicationController
 
   # GET /prestation_orders/new/step:step_number
   def new
-    session[:max_step_reached] = 1 unless session[:max_step_reached]
+    session[:max_step_reached] ||= 1
     current_step_session = session[:prestation_order_step] || 1
 
     if params[:step_number].to_i > session[:max_step_reached]
@@ -25,13 +25,17 @@ class PrestationOrdersController < ApplicationController
     end
 
     session[:prestation_order_params] ||= {}
+    session[:prestation_order_params][:length] ||= Time.new(1993, 02, 24, 0, 0, 0)
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
     @prestation_order.current_step = params[:step_number].to_i
+
 
     #generate errors if redirected from 'create' (POST) with errors
     if params[:has_error]
       @prestation_order.valid?
     end
+
+
 
   end
 
@@ -46,7 +50,6 @@ class PrestationOrdersController < ApplicationController
     session[:max_step_reached] = 1 unless session[:max_step_reached]
 
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
-
     @prestation_order.current_step = session[:prestation_order_step] || 1
 
     if @prestation_order.first_step?

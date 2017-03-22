@@ -123,3 +123,21 @@ background: url("http://lorempixel.com/736/200/cats");
 .form-group{
   padding: 0 10px;
 }
+
+.form-length{
+  width: 45% !important;
+  float: none !important;
+  padding: 0 !important;
+
+  @media (min-width: 768px){
+    width: 25% !important;
+  }
+
+  @media (min-width: 992px){
+    width: 40% !important;
+  }
+
+  @media (min-width: 1200px){
+    width: 17% !important;
+  }
+}
