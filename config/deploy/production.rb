@@ -6,7 +6,8 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server "srvz-webapp.he-arc.ch", user: "matthieu", roles: %w{app db web}
+# server "srvz-webapp.he-arc.ch", user: "matthieu", roles: %w{app db web}
+server "server_srvz", roles: %w{app db web}
 
 
 
@@ -62,9 +63,5 @@ server "srvz-webapp.he-arc.ch", user: "matthieu", roles: %w{app db web}
 #     # password: "please use keys"
 #   }
 
-set :tmp_dir, "/tmp/matthieu"
+set :tmp_dir, "/tmp/" + ENV['USERNAME']
 
-set :ssh_options, {
-    keys: %w(C:\Users\Mateli\.ssh\id_rsa),
-	port: 2201
-}
