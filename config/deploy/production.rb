@@ -63,5 +63,5 @@ server "server_srvz", roles: %w{app db web}
 #     # password: "please use keys"
 #   }
 
-set :tmp_dir, "/tmp/" + ENV['USERNAME']
+set :tmp_dir, "/tmp/" + ENV['USER']
 

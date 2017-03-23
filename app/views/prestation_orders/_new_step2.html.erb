@@ -1,8 +1,4 @@
 
-
-
-
-
   <h2> Détails de la prestation </h2>
 
   <div class="row">
@@ -84,7 +80,7 @@
             <%= f.label :typeofproduct, "Type de produit *", :class => "control-label col-xs-20" %>
             <div class="input-group col-xs-40">
               <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
-              <%= f.select :typeofproduct, @prestation_order.typesofproduct, {}, { :class => "form-control" } %>
+              <%= f.select :typeofproduct, PrestationOrder.typesofproduct, {}, { :class => "form-control" } %>
             </div>
           </div>
 
@@ -101,12 +97,51 @@
             <div class="input-group col-xs-40">
               <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
               <%= f.time_select :length, { :include_seconds => true, :discard_hour => true}, {:class => "form-control form-length"} %>
-              00:00 si vous ne savez pas
+
             </div>
           </div>
 
+          <div class="form-group">
+            <%= f.label :interview, "Interview / voix-off *", :class => "control-label col-xs-20" %>
+            <div class="input-group col-xs-40">
+              <label class="radio-inline" >
+                <%= f.radio_button :interview, "Oui", :checked => false, :class => "" %>
+                Oui
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :interview, "Ne sais pas", :checked => true, :class => "" %>
+                Ne sais pas
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :interview, "Non", :checked => false, :class => "" %>
+                Non
+              </label>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <%= f.label :month, "Mois de tournage approximatif *", :class => "control-label col-xs-20" %>
+            <div class="input-group col-xs-40">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-bullhorn"></span></span>
+              <%= select_month Date.today, {}, :class => "form-control", :id => "prestation_order_month", :name => "prestation_order[month]" %>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <%= f.label :day, "Jour de tournage approx. (facultatif)", :class => "control-label col-xs-20" %>
+            <div class="input-group col-xs-40">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-bullhorn"></span></span>
+              <%= f.number_field :day, {:in => 1..31, :class => "form-control"} %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :other, "Remarques éventuelles (facultatif)", :class => "control-label col-xs-20" %>
+            <div class="input-group col-xs-40">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+              <%= f.text_area :other, {:rows => "5", :placeholder => "un champ n'est pas clair, une idée, ...", :class => "form-control"} %>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -114,30 +149,7 @@
   </div>
 
 
-  <div class="field">
-    <%=  %>
 
-  </div>
-
-  <div class="field">
-    <%= f.label :interview %>
-    <%= f.text_field :interview %>
-  </div>
-
-  <div class="field">
-    <%= f.label :month %>
-    <%= f.month_field :month %>
-  </div>
-
-  <div class="field">
-    <%= f.label :day %>
-    <%= f.number_field :day, {:in => 1..31} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :other %>
-    <%= f.text_area :other %>
-  </div>
 
   <div class="actions">
     <%= f.submit "Continue" %>

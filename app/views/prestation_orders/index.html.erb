@@ -35,9 +35,9 @@
         <td><%= prestation_order.availabilities %></td>
         <td><%= prestation_order.typeofproduct %></td>
         <td><%= prestation_order.product %></td>
-        <td><%= prestation_order.length %></td>
+        <td><%= prestation_order.length.strftime("%M:%S") %></td>
         <td><%= prestation_order.interview %></td>
-        <td><%= prestation_order.month %></td>
+        <td><%= t(:"date.month_names")[prestation_order.month.to_i]  %></td>
         <td><%= prestation_order.day %></td>
         <td><%= prestation_order.other %></td>
         <td><%= link_to 'Show', prestation_order %></td>
