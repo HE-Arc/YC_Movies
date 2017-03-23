@@ -41,6 +41,67 @@
 				</div>
 			</div>
 		</div>
+<!--DEBUT-->
+
+<!-- POURQUOI AVEC CELA CA MARCHE ?
+<div class="jumbotron">
+  <div class="container">
+    <h1>Share your videos with the world!</h1>
+    <p>Click the button below to share your video from YouTube.</p>
+    <p>
+      <%= link_to 'Add video now!', new_galery_path, class: 'btn btn-primary btn-lg' %>
+    </p>
+  </div>
+</div>
+-->
+
+<!--DELETE CETTE PARTIE DU HAUT AVANT DEBUT -->
+		<% if @galeries.any? %>
+  <div class="container">
+    <h1>Latest videos</h1>
+    <div id="player-wrapper"></div>
+    <% @galeries.in_groups_of(3) do |group| %>
+      <div class="row">
+        <% group.each do |galerie| %>
+          <% if galerie %>
+            <div class="col-md-4">
+              <div class="yt_video thumbnail">
+
+				<!-- MODAL http://azmind.com/bootstrap-tutorial-modal-video -->
+				<div class="modal fade" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
+				    <div class="modal-dialog" role="document">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				                    <span aria-hidden="true">&times;</span>
+				                </button>
+				            </div>
+				            <div class="modal-body">
+				                <div class="modal-video">
+				                    <div class="embed-responsive embed-responsive-16by9">
+				                        <iframe id="iframe-modal" "class="embed-responsive-item" src= "https://www.youtube.com/embed/<%= galerie.uid %>"
+				                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+
+
+                <%= link_to image_tag("https://img.youtube.com/vi/#{galerie.uid}/mqdefault.jpg",
+                                      class: 'img-rounded'),
+                            "?uid=#{galerie.uid}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{galerie.uid}"} %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<!--FIN-->
+		<!--
     <div class="panel-body">
 			<div class="row">
 				<div class="infoonhover col-xs-30 col-sm-20 col-md-10">
@@ -109,6 +170,8 @@
 
 		</div>
   </div>
+
+  -->
 
 </div>
 

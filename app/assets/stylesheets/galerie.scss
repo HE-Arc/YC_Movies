@@ -13,6 +13,10 @@
   backface-visibility: hidden;
 }
 
+.thumbnail {
+
+}
+
 .middle {
   transition: .5s ease;
   opacity: 0;
@@ -40,4 +44,9 @@
 
 #col-photo-video_id{
   margin-bottom: 20px;
+}
+
+.launch-modal {
+      width: 302px;
+    height: 174px;
 }

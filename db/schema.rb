@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322115138) do
+ActiveRecord::Schema.define(version: 20170322192244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20170322115138) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "galeries", force: :cascade do |t|
+    t.string   "uid"
+    t.datetime "created_at"
+    t.index ["uid"], name: "index_galeries_on_uid", using: :btree
+  end
+
   create_table "medias", force: :cascade do |t|
     t.string   "uid"
     t.datetime "created_at", null: false
@@ -70,6 +76,13 @@ ActiveRecord::Schema.define(version: 20170322115138) do
     t.text     "other"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uid"], name: "index_videos_on_uid", using: :btree
   end
 
 end
