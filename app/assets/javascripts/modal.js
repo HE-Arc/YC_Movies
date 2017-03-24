@@ -18,9 +18,9 @@ jQuery(document).ready(function() {
   }
 
   function gup( name, url ) {
-    if (!url) url = location.href;
+    if (!url) url = location.searchs;
     name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regexS = name+"=([^&#]*)";
     var regex = new RegExp( regexS );
     var results = regex.exec( url );
     return results == null ? null : results[1];
