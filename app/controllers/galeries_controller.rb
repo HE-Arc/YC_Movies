@@ -1,7 +1,9 @@
 class GaleriesController < ApplicationController
   def index
     @galeries = Galerie.order('created_at DESC')
+    @pictures = Picture.order('created_at DESC')
     @uid = ""
+
   end
 
   def new

@@ -42,28 +42,26 @@
 			</div>
 		</div>
 <!--DEBUT-->
+<% @medias = (@galeries + @pictures) %>
 
-<!-- POURQUOI AVEC CELA CA MARCHE ?
-<div class="jumbotron">
-  <div class="container">
-    <h1>Share your videos with the world!</h1>
-    <p>Click the button below to share your video from YouTube.</p>
-    <p>
-      <%= link_to 'Add video now!', new_galery_path, class: 'btn btn-primary btn-lg' %>
-    </p>
-  </div>
-</div>
--->
-
-<!--DELETE CETTE PARTIE DU HAUT AVANT DEBUT -->
-		<% if @galeries.any? %>
+		<% if @medias.any? %>
   <div class="container">
     <h1>Latest videos</h1>
     <div id="player-wrapper"></div>
-    <% @galeries.in_groups_of(3) do |group| %>
+    <% @medias.sort_by { |model| model.created_at }.in_groups_of(3) do |model| %>
       <div class="row">
-        <% group.each do |galerie| %>
+        <% model.each do |galerie| %>
           <% if galerie %>
+
+          	<% if galerie.class.name == "Galerie" %>
+			<% @media = "https://www.youtube.com/embed/<%= galerie.uid" %>
+			<% @media2 ="https://img.youtube.com/vi/#{galerie.uid}/mqdefault.jpg" %>
+			<% @media3 = galerie.uid %>
+			<% else %>
+			<% @media = galerie.image.url(:large) %>
+			<% @media2 =galerie.image.url(:medium) %>
+			<% @media3 = "picture" %>
+			<% end %>
             <div class="col-md-4">
               <div class="yt_video thumbnail">
 
@@ -79,7 +77,7 @@
 				            <div class="modal-body">
 				                <div class="modal-video">
 				                    <div class="embed-responsive embed-responsive-16by9">
-				                        <iframe id="iframe-modal" "class="embed-responsive-item" src= "https://www.youtube.com/embed/<%= galerie.uid %>"
+				                        <iframe id="iframe-modal" "class="embed-responsive-item" src= "@media"
 				                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 				                    </div>
 				                </div>
@@ -88,10 +86,10 @@
 				    </div>
 				</div>
 
-
-                <%= link_to image_tag("https://img.youtube.com/vi/#{galerie.uid}/mqdefault.jpg",
+				<%= @media2 %>
+                <%= link_to image_tag(@media2,
                                       class: 'img-rounded'),
-                            "?uid=#{galerie.uid}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{galerie.uid}"} %>
+                            "?uid=#{@media3}&pic=#{@media2}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{@media3}"} %>
               </div>
             </div>
           <% end %>

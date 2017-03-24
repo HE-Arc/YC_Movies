@@ -15,6 +15,7 @@ gem 'pg'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'devise'
 gem 'inherited_resources', '~> 1.7'
+gem "paperclip", "~> 5.0.0"
 #gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
 

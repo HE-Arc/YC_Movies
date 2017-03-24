@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322192244) do
+ActiveRecord::Schema.define(version: 20170323232623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,13 @@ ActiveRecord::Schema.define(version: 20170322192244) do
     t.index ["uid"], name: "index_galeries_on_uid", using: :btree
   end
 
-  create_table "medias", force: :cascade do |t|
-    t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["uid"], name: "index_medias_on_uid", using: :btree
+  create_table "pictures", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "prestation_orders", force: :cascade do |t|
@@ -76,13 +78,6 @@ ActiveRecord::Schema.define(version: 20170322192244) do
     t.text     "other"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "videos", force: :cascade do |t|
-    t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["uid"], name: "index_videos_on_uid", using: :btree
   end
 
 end

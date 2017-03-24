@@ -4,10 +4,11 @@ jQuery(document).ready(function() {
     e.preventDefault();
 
   var href = $(this).attr('href');
-	var uid = getUid(href);
+	var uid = gup("uid",href);
 
 
     var link = "https://www.youtube.com/embed/"+uid;
+    if(uid == "picture") link = gup("pic",href);
     $("#iframe-modal").attr("src", link);
     $( '#' + $(this).data('modal-id') ).modal();
 	});
@@ -15,5 +16,14 @@ jQuery(document).ready(function() {
   function getUid(str) {
       return str.split('=')[1];
   }
+
+  function gup( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}
 
 });
