@@ -46,6 +46,7 @@ class PrestationOrdersController < ApplicationController
   # POST /prestation_orders
   # POST /prestation_orders.json
   def create
+    
     session[:prestation_order_params].deep_merge!(prestation_order_params) if prestation_order_params
     session[:max_step_reached] = 1 unless session[:max_step_reached]
 

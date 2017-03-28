@@ -1,8 +1,28 @@
 fr-CH:
+  prestation_order:
+    error-header:
+      one: 1 erreur empêche de passer à l'étape suivante
+      other: "%{count} erreurs empêchent de passer à l'étape suivante"
   activerecord:
     models:
-      prestation_order: Dude
+      prestation_order: Demande de prestation
     attributes:
       prestation_order:
-        name: "Nom"
-        firstname: "Prénom"
+        name: Nom
+        firstname: Prénom
+        entreprise : Entreprise
+        email: E-mail
+        tel: Téléphone
+        place: Lieu
+        availabilities: Disponibilités
+        typeofproduct: Type de produit
+        product: Produit
+        length: Durée de la vidéo
+        interview: Interview/voix-off
+        month: Mois de trounage
+        day: Jour de tournage
+        other: Remarques
+  errors:
+    messages:
+      blank: doit être rempli
+    models:

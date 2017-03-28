@@ -1,5 +1,32 @@
 
-  <h2> Détails de la prestation </h2>
+<div class="row text-center">
+  <h1 class="h1-prestations"> Nouvelle demande de prestation </h1>
+
+  <div class="breadcrumb hidden-xs">
+    <a href="/prestation_orders/new/step1">Choix de la prestation</a>
+    <a href="/prestation_orders/new/step2" class="active">Détails de la commande</a>
+    <a href="#" class="disabled">Récapitulatif et confirmation</a>
+  </div>
+
+  <div class="breadcrumb visible-xs-inline-block">
+    <a href="/prestation_orders/new/step1">thème</a>
+    <a href="/prestation_orders/new/step2" class="active">détails</a>
+    <a href="" class="disabled">récap</a>
+  </div>
+
+</div>
+
+  <% if @prestation_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t("prestation_order.error-header", count: @prestation_order.errors.count)   %>  : </h2>
+
+      <ul>
+      <% @prestation_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="col-xs-60 col-sm-60 col-md-29">
@@ -103,7 +130,7 @@
 
           <div class="form-group">
             <%= f.label :interview, "Interview / voix-off *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
+            <div class="input-group col-xs-40 text-center">
               <label class="radio-inline" >
                 <%= f.radio_button :interview, "Oui", :checked => false, :class => "" %>
                 Oui
@@ -148,10 +175,7 @@
     </div>
   </div>
 
-
-
-
-  <div class="actions">
-    <%= f.submit "Continue" %>
-    <%= f.submit "Back", :name => "back_button" %>
+  <div class="actions text-center">
+      <%= f.submit "<< Retour", :name => "back_button" %>
+      <%= f.submit "Continuer >>" %>
   </div>

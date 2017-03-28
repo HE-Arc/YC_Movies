@@ -1,31 +1,60 @@
 
 
+<div class="row text-center">
+  <h1 class="h1-prestations"> Nouvelle demande de prestation </h1>
 
-  <h2> Choix du thème </h2>
+  <div class="breadcrumb hidden-xs">
+  	<a href="/prestation_orders/new/step1" class="active">Choix de la prestation</a>
+  	<a href="" class="disabled">Détails de la commande</a>
+  	<a href="" class="disabled">Récapitulatif et confirmation</a>
+  </div>
 
-  <div class="container">
-    <div class="row">
-      <%= f.hidden_field :typeofproduct, value: "" %>
+  <div class="breadcrumb visible-xs-inline-block">
+    <a href="/prestation_orders/new/step1" class="active">thème</a>
+    <a href="" class="disabled">détails</a>
+    <a href="" class="disabled">récap</a>
+  </div>
 
-      <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-        <%= f.submit "Passion" , {:id => "prestation_1_choose_theme", :class => "prestations_choose_theme"} %>
+</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2> Choisissez votre prestation </h2>
+
+      <div class="row">
+        <%= f.hidden_field :typeofproduct, value: "" %>
+
+        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+          <%= f.submit PrestationOrder.typesofproduct[0] , {:id => "prestation_1_choose_theme", :class => "prestations_choose_theme"} %>
+        </div>
+
+        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+          <%= f.submit PrestationOrder.typesofproduct[1] , {:id => "prestation_2_choose_theme", :class => "prestations_choose_theme"} %>
+        </div>
+
+        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+          <%= f.submit PrestationOrder.typesofproduct[2] , {:id => "prestation_3_choose_theme", :class => "prestations_choose_theme"} %>
+        </div>
+
+        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+          <%= f.submit PrestationOrder.typesofproduct[3], {:id => "prestation_4_choose_theme", :class => "prestations_choose_theme"} %>
+        </div>
+
+        <div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
+          <%= f.submit PrestationOrder.typesofproduct[4], {:id => "prestation_5_choose_theme", :class => "prestations_choose_theme"} %>
+        </div>
+
       </div>
+    </div>
+    <div class="panel-body">
 
-      <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-        <%= f.submit "Fête" , {:id => "prestation_2_choose_theme", :class => "prestations_choose_theme"} %>
+      <div class "row">
+        <div clas="col">
+          <p>
+            « Commandez ici la prestation dont vous avez besoin ! Après une analyse de terrain avec vous,
+  nous réaliserons votre reportage, aftermovie, vidéo de mariage, vidéo commerciale d’entreprise
+  ou création artistique. Chacune de ces vidéos prendra la forme dont vous avez besoin ! »
+          </p>
+        </div>
       </div>
-
-      <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-        <%= f.submit "Commercial" , {:id => "prestation_3_choose_theme", :class => "prestations_choose_theme"} %>
-      </div>
-
-      <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-        <%= f.submit "Mariage", {:id => "prestation_4_choose_theme", :class => "prestations_choose_theme"} %>
-      </div>
-
-      <div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
-        <%= f.submit "Artistique", {:id => "prestation_5_choose_theme", :class => "prestations_choose_theme"} %>
-      </div>
-
     </div>
   </div>

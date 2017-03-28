@@ -26,7 +26,7 @@ class PrestationOrder < ApplicationRecord
 	end
 
 	def self.typesofproduct
-		%w[Passion Fête Commercial Mariage Artistique]
+		%w[Reportage Aftermovie Commercial Mariage Création]
 	end
 
 	validates :name, presence: true, length: { maximum: 50 }, :if => lambda { |o| o.current_step == 2 }
@@ -43,6 +43,5 @@ class PrestationOrder < ApplicationRecord
 	validates :day, numericality: { only_integer: true }, allow_blank: true, :if => lambda { |o| o.current_step == 2 }
 	validates :month, presence: true, :if => lambda { |o| o.current_step == 2 }
 	validates :other, length: { maximum: 500 }, allow_blank: true, :if => lambda { |o| o.current_step == 2 }
-
 
 end
