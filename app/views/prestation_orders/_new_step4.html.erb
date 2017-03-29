@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :product, "Produit à promouvoir (établissement, fête, bar à cocktail, bonne cuisine, …)  : ", :class => "control-label col-xs-20" %>
+          <%= f.label :product, "Produit à promouvoir :", :class => "control-label col-xs-20" %>
           <div class="text-padded col-xs-40">
             <%=h @prestation_order.product %>
           </div>
@@ -90,13 +90,17 @@
         <div class="form-group">
           <%= f.label :length, "Durée de la vidéo [min]:[sec] :", :class => "control-label col-xs-20" %>
           <div class="text-padded col-xs-40">
-            <%=h @prestation_order.length.strftime("%M:%S") %>
+            <% if @prestation_order.length.strftime("%M:%S") == "00:00" %>
+              Ne sais pas
+            <% else %>
+              <%=h @prestation_order.length.strftime("%M:%S") %>
+            <% end %>
           </div>
         </div>
 
         <% if @prestation_order.other != "" %>
           <div class="form-group">
-            <%= f.label :other, "Remarques éventuelles (facultatif)", :class => "control-label col-xs-20" %>
+            <%= f.label :other, "Remarques :", :class => "control-label col-xs-20" %>
             <div class="text-padded col-xs-40">
               <%=h @prestation_order.other %>
             </div>
