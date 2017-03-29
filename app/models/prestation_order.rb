@@ -34,14 +34,10 @@ class PrestationOrder < ApplicationRecord
 	validates :entreprise, length: { maximum: 50 } , allow_blank: true, :if => lambda { |o| o.current_step == 2 }
 	validates :email, presence: true, length: { maximum: 254 }, :if => lambda { |o| o.current_step == 2 }
 	validates :tel, presence: true, length: { maximum: 20 }, numericality: { only_integer: true }, :if => lambda { |o| o.current_step == 2 }
-	validates :place, presence: true, length: { maximum: 500 }, :if => lambda { |o| o.current_step == 2 }
 	validates :availabilities, presence: true, length: { maximum: 500 }, :if => lambda { |o| o.current_step == 2 }
 	validates :typeofproduct, presence: true, inclusion: { in: self.typesofproduct }, :if => lambda { |o| o.current_step == 2 }
 	validates :product, presence: true, length: { maximum: 500 }, :if => lambda { |o| o.current_step == 3 }
 	validates :length, presence: true, :if => lambda { |o| o.current_step == 3 }
-	validates :interview, presence: true, :if => lambda { |o| o.current_step == 3 }
-	validates :day, numericality: { only_integer: true }, allow_blank: true, :if => lambda { |o| o.current_step == 3 }
-	validates :month, presence: true, :if => lambda { |o| o.current_step == 3 }
 	validates :other, length: { maximum: 500 }, allow_blank: true, :if => lambda { |o| o.current_step == 3 }
 
 end
