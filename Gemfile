@@ -19,6 +19,8 @@ group :development do
     gem 'certified', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
 
+## Gemfile for paginate
+gem 'will_paginate'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
