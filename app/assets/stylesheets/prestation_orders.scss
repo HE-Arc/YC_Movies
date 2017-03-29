@@ -3,23 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// titre h1
+@import "myvariables";
 
-.h1-prestations{
-  @media (min-width: 1200px){
-    float: left;
-    width: 520px;
-  }
-}
 
 
 
 // breadcrumbs arrow
 
-
-
 .breadcrumb {
-  padding: 0 !important;
 	display: inline-block;
   margin-top: 20px;
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
@@ -36,7 +27,7 @@
 	float: left;
 	font-size: 12px;
 	line-height: 36px;
-	color: white !important;
+	//color: white;
 	/*need more margin on the left of links to accomodate the numbers*/
 	padding: 0 10px 0 60px;
 	background: #666;
@@ -115,10 +106,23 @@
 	font-weight: bold;
 }
 
-.disabled {
+
+/*disable style*/
+.breadcrumb a.disabled{
   pointer-events: none;
   cursor: default;
+  color: $black_brighter;
+  background: #bbb;
+  background: linear-gradient(#bbb, #888);
 }
+.breadcrumb a.disabled:after {
+  background: #bbb;
+  background: linear-gradient(135deg, #bbb, #888);
+}
+.breadcrumb a.disabled:before {
+  color: $white;
+}
+
 
 
 

@@ -4,15 +4,12 @@
 
   <div class="breadcrumb hidden-xs">
     <a href="/prestation_orders/new/step1">Choix de la prestation</a>
-    <a href="/prestation_orders/new/step2" class="active">Détails de la commande</a>
-    <a href="#" class="disabled">Récapitulatif et confirmation</a>
+    <a href="/prestation_orders/new/step2" class="active">Infos sur le mandant</a>
+    <a href="" class="disabled">Infos sur le projet</a>
+    <a href="" class="disabled">Récapitulatif et confirmation</a>
   </div>
 
-  <div class="breadcrumb visible-xs-inline-block">
-    <a href="/prestation_orders/new/step1">thème</a>
-    <a href="/prestation_orders/new/step2" class="active">détails</a>
-    <a href="" class="disabled">récap</a>
-  </div>
+
 
 </div>
 
@@ -29,153 +26,72 @@
   <% end %>
 
   <div class="row">
-    <div class="col-xs-60 col-sm-60 col-md-29">
+
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2> Généralités </h2>
+          <h2> Informations sur le mandant </h2>
         </div>
         <div class="panel-body">
 
-          <div class="form-group">
-            <%= f.label :name , "Nom *", :class => "control-label col-xs-20"%>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-              <%= f.text_field :name, {:placeholder => "Nom", :class => "form-control"} %>
+          <div class="col-xs-60 col-sm-60 col-md-30">
+            <div class="form-group">
+              <%= f.label :name , "Nom *", :class => "control-label col-xs-20"%>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <%= f.text_field :name, {:required => true, :placeholder => "Nom", :class => "form-control"} %>
+              </div>
             </div>
+
+            <div class="form-group">
+              <%= f.label :firstname, "Prénom *", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <%= f.text_field :firstname, {:required => true, :placeholder => "Prénom", :class => "form-control"} %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email, "E-mail *", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-send"></span></span>
+                <%= f.email_field :email, {:required => true, :placeholder => "email@example.com", :class => "form-control"} %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :tel, "Tél. *", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+                <%= f.telephone_field :tel, {:required => true, :placeholder => "0041...", :class => "form-control"} %>
+              </div>
+            </div>
+
           </div>
 
-          <div class="form-group">
-            <%= f.label :firstname, "Prénom *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-              <%= f.text_field :firstname, {:placeholder => "Prénom", :class => "form-control"} %>
+          <div class="col-xs-60 col-sm-60 col-md-30">
+            <div class="form-group">
+              <%= f.label :entreprise, "Nom entreprise", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-briefcase"></span></span>
+                <%= f.text_field :entreprise, {:placeholder => "Nom de l'entreprise", :class => "form-control"} %>
+              </div>
             </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :entreprise, "Nom entreprise", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-briefcase"></span></span>
-              <%= f.text_field :entreprise, {:placeholder => "Nom de l'entreprise", :class => "form-control"} %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :email, "E-mail *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-send"></span></span>
-              <%= f.email_field :email, { :placeholder => "email@example.com", :class => "form-control"} %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :tel, "N° de téléphone *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
-              <%= f.telephone_field :tel, {:placeholder => "0041...", :class => "form-control"} %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :place, "Lieu du déroulement du projet, type d'accès (voiture, bus), etc...  *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
-              <%= f.text_area :place, {:rows => "5", :placeholder => "près du chêne au centre du village, en voiture se parker 50m en direction de ...", :class => "form-control"} %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :availabilities, "Disponibilités pour un éventuel rendez-vous *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-              <%= f.text_area :availabilities, {:rows => "5", :placeholder => "vendredi 6 décembre, dès 18h ou mercredi 11 décembre le matin ...", :class => "form-control"} %>
+            <div class="form-group">
+              <%= f.label :availabilities, "Disponibilités *", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                <%= f.text_area :availabilities, {:required => true, :rows => "5", :placeholder => "Vos disponibilités pour un éventuel rendez-vous ...", :class => "form-control"} %>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
 
-    <div class="col-xs-60 col-sm-60 col-md-29 col-md-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h2> Projet </h2>
-        </div>
-        <div class="panel-body">
 
-          <div class="form-group">
-            <%= f.label :typeofproduct, "Type de produit *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
-              <%= f.select :typeofproduct, PrestationOrder.typesofproduct, {}, { :class => "form-control" } %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :product, "Produit à promouvoir (établissement, fête, bar à cocktail, bonne cuisine, …) * ", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-screenshot"></span></span>
-              <%= f.text_area :product, {:rows => "5", :placeholder => "", :class => "form-control"} %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :length, "Durée de la vidéo [min]:[sec] *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-              <%= f.time_select :length, { :include_seconds => true, :discard_hour => true}, {:class => "form-control form-length"} %>
-
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :interview, "Interview / voix-off *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40 text-center">
-              <label class="radio-inline" >
-                <%= f.radio_button :interview, "Oui", :checked => false, :class => "" %>
-                Oui
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :interview, "Ne sais pas", :checked => true, :class => "" %>
-                Ne sais pas
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :interview, "Non", :checked => false, :class => "" %>
-                Non
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :month, "Mois de tournage approximatif *", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-bullhorn"></span></span>
-              <%= select_month Date.today, {}, :class => "form-control", :id => "prestation_order_month", :name => "prestation_order[month]" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :day, "Jour de tournage approx. (facultatif)", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-bullhorn"></span></span>
-              <%= f.number_field :day, {:in => 1..31, :class => "form-control"} %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :other, "Remarques éventuelles (facultatif)", :class => "control-label col-xs-20" %>
-            <div class="input-group col-xs-40">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
-              <%= f.text_area :other, {:rows => "5", :placeholder => "un champ n'est pas clair, une idée, ...", :class => "form-control"} %>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="actions text-center">
-      <%= f.submit "<< Retour", :name => "back_button" %>
-      <%= f.submit "Continuer >>" %>
+      <%= f.submit "<< Retour au choix de la prestation", :name => "back_button" %>
+      <%= f.submit "Passer à la suite (infos du projet) >>" %>
   </div>

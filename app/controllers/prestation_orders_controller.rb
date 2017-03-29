@@ -46,7 +46,7 @@ class PrestationOrdersController < ApplicationController
   # POST /prestation_orders
   # POST /prestation_orders.json
   def create
-    
+
     session[:prestation_order_params].deep_merge!(prestation_order_params) if prestation_order_params
     session[:max_step_reached] = 1 unless session[:max_step_reached]
 
@@ -63,7 +63,7 @@ class PrestationOrdersController < ApplicationController
       @prestation_order.previous_step
       session[:prestation_order_step] = @prestation_order.current_step
     elsif @prestation_order.valid?
-      if @prestation_order.third_step?
+      if @prestation_order.last_step?
         if verify_recaptcha(model: @prestation_order) && @prestation_order.save
           captcha_success = true
         end

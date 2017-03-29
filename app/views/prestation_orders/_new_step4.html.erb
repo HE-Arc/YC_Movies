@@ -1,0 +1,116 @@
+
+<div class="row text-center">
+  <h1 class="h1-prestations"> Nouvelle demande de prestation </h1>
+  <div class="breadcrumb hidden-xs">
+    <a href="/prestation_orders/new/step1">Choix de la prestation</a>
+    <a href="/prestation_orders/new/step2">Infos sur le mandant</a>
+    <a href="/prestation_orders/new/step3">Infos sur le projet</a>
+    <a href="/prestation_orders/new/step4" class="active">Récapitulatif et confirmation</a>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-60 col-sm-60 col-md-29">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2> Informations sur le mandant </h2>
+      </div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <%= f.label :name , "Nom :", :class => "control-label col-xs-20"%>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.name %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :firstname , "Prénom :", :class => "control-label col-xs-20"%>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.firstname %>
+          </div>
+        </div>
+
+        <% if @prestation_order.entreprise != "" %>
+        <div class="form-group">
+          <%= f.label :entreprise, "Nom entreprise :", :class => "control-label col-xs-20" %>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.entreprise %>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :email, "E-mail :", :class => "control-label col-xs-20" %>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.email %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :tel, "N° de téléphone :", :class => "control-label col-xs-20" %>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.tel %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :availabilities, "Disponibilités pour un éventuel rendez-vous :", :class => "control-label col-xs-20" %>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.availabilities %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-60 col-sm-60 col-md-29 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2> Informations sur le projet </h2>
+      </div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <%= f.label :typeofproduct, "Type de produit :", :class => "control-label col-xs-20" %>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.typeofproduct %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :product, "Produit à promouvoir (établissement, fête, bar à cocktail, bonne cuisine, …)  : ", :class => "control-label col-xs-20" %>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.product %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :length, "Durée de la vidéo [min]:[sec] :", :class => "control-label col-xs-20" %>
+          <div class="text-padded col-xs-40">
+            <%=h @prestation_order.length.strftime("%M:%S") %>
+          </div>
+        </div>
+
+        <% if @prestation_order.other != "" %>
+          <div class="form-group">
+            <%= f.label :other, "Remarques éventuelles (facultatif)", :class => "control-label col-xs-20" %>
+            <div class="text-padded col-xs-40">
+              <%=h @prestation_order.other %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= recaptcha_tags %>
+
+<div class="actions text-center">
+  <%= f.submit "<< Retour aux infos du projet", :name => "back_button" %>
+  <%= f.submit "Envoyer la demande de prestation" %>
+</div>

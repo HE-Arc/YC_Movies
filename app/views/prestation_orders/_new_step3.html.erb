@@ -3,142 +3,63 @@
   <h1 class="h1-prestations"> Nouvelle demande de prestation </h1>
   <div class="breadcrumb hidden-xs">
     <a href="/prestation_orders/new/step1">Choix de la prestation</a>
-    <a href="/prestation_orders/new/step2">Détails de la commande</a>
-    <a href="/prestation_orders/new/step3" class="active">Récapitulatif et confirmation</a>
-  </div>
-
-  <div class="breadcrumb visible-xs-inline-block">
-    <a href="/prestation_orders/new/step1">thème</a>
-    <a href="/prestation_orders/new/step2">détails</a>
-    <a href="/prestation_orders/new/step3" class="active">récap</a>
+    <a href="/prestation_orders/new/step2">Infos sur le mandant</a>
+    <a href="/prestation_orders/new/step3" class="active">Infos sur le projet</a>
+    <a href="" class="disabled">Récapitulatif et confirmation</a>
   </div>
 
 </div>
 
 <div class="row">
-  <div class="col-xs-60 col-sm-60 col-md-29">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2> Généralités </h2>
-      </div>
-      <div class="panel-body">
-
-        <div class="form-group">
-          <%= f.label :name , "Nom :", :class => "control-label col-xs-20"%>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.name %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :firstname , "Prénom :", :class => "control-label col-xs-20"%>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.firstname %>
-          </div>
-        </div>
-
-        <% if @prestation_order.entreprise != "" %>
-        <div class="form-group">
-          <%= f.label :entreprise, "Nom entreprise :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.entreprise %>
-          </div>
-        </div>
-        <% end %>
-
-        <div class="form-group">
-          <%= f.label :email, "E-mail :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.email %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :tel, "N° de téléphone :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.tel %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :place, "Lieu du déroulement du projet, type d'accès (voiture, bus), ... :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.place %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :availabilities, "Disponibilités pour un éventuel rendez-vous :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.availabilities %>
-          </div>
-        </div>
-
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2> Infos sur le projet </h2>
     </div>
-  </div>
+    <div class="panel-body">
 
-  <div class="col-xs-60 col-sm-60 col-md-29 col-md-offset-1">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2> Projet </h2>
-      </div>
-      <div class="panel-body">
+      <div class="col-xs-60 col-sm-60 col-md-30">
 
         <div class="form-group">
-          <%= f.label :typeofproduct, "Type de produit :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.typeofproduct %>
+          <%= f.label :typeofproduct, "Type de prestation ", :class => "control-label col-xs-20" %>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
+            <%= f.select :typeofproduct, PrestationOrder.typesofproduct, {}, {:disabled => true,  :class => "form-control" } %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :product, "Produit à promouvoir (établissement, fête, bar à cocktail, bonne cuisine, …)  : ", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.product %>
+          <%= f.label :product, "Produit *", :class => "control-label col-xs-20" %>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-screenshot"></span></span>
+            <%= f.text_area :product, {:required => true, :rows => "5", :placeholder => "Produit à promouvoir (établissement, fête, bar à cocktail, bonne cuisine, …)", :class => "form-control"} %>
           </div>
         </div>
-
-        <div class="form-group">
-          <%= f.label :length, "Durée de la vidéo [min]:[sec] :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.length.strftime("%M:%S") %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :interview, "Interview / voix-off :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h @prestation_order.interview %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :month, "Mois de tournage approximatif :", :class => "control-label col-xs-20" %>
-          <div class="text-padded col-xs-40">
-            <%=h t(:"date.month_names")[@prestation_order.month.to_i] %>
-          </div>
-        </div>
-
-        <% if @prestation_order.day != "" %>
-          <div class="form-group">
-            <%= f.label :day, "Jour de tournage approx. :", :class => "control-label col-xs-20" %>
-            <div class="text-padded col-xs-40">
-              <%=h @prestation_order.day %>
-            </div>
-          </div>
-        <% end %>
-
-        <% if @prestation_order.other != "" %>
-          <div class="form-group">
-            <%= f.label :other, "Remarques éventuelles (facultatif)", :class => "control-label col-xs-20" %>
-            <div class="text-padded col-xs-40">
-              <%=h @prestation_order.other %>
-            </div>
-          </div>
-        <% end %>
 
       </div>
+
+
+      <div class="col-xs-60 col-sm-60 col-md-30">
+        <div class="form-group">
+          <%= f.label :length, "Durée de la vidéo [min]:[sec] *", :class => "control-label col-xs-20" %>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+            <%= f.time_select :length, { :include_seconds => true, :discard_hour => true}, {:class => "form-control form-length"} %>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :other, "Remarques", :class => "control-label col-xs-20" %>
+          <div class="input-group col-xs-40">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+            <%= f.text_area :other, {:rows => "5", :placeholder => "Remarques éventuelles (facultatif) : un champ n'est pas clair, une idée, une proposition, etc...", :class => "form-control"} %>
+          </div>
+        </div>
+
+      </div>
+
+
+
     </div>
   </div>
 </div>
@@ -146,6 +67,6 @@
 <%= recaptcha_tags %>
 
 <div class="actions text-center">
-  <%= f.submit "<< Retour", :name => "back_button" %>
-  <%= f.submit "Envoyer la demande de prestation" %>
+  <%= f.submit "<< Retour aux infos du mandant", :name => "back_button" %>
+  <%= f.submit "Passer au récapitulatif >>" %>
 </div>
