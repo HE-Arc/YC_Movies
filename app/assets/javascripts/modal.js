@@ -5,6 +5,7 @@ jQuery(document).ready(function() {
 
   var href = $(this).attr('href');
 	var uid = gup("uid",href);
+  
 
 
     var link = "https://www.youtube.com/embed/"+uid;
@@ -13,17 +14,21 @@ jQuery(document).ready(function() {
     $( '#' + $(this).data('modal-id') ).modal();
 	});
 
-  function getUid(str) {
-      return str.split('=')[1];
-  }
 
   function gup( name, url ) {
-    if (!url) url = location.searchs;
-    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regexS = name+"=([^&#]*)";
-    var regex = new RegExp( regexS );
-    var results = regex.exec( url );
-    return results == null ? null : results[1];
+        url = url.substring(1);
+       var vars = url.split("&");
+       var i = 0;
+       while(vars[i]) {
+       var splitted = vars[i].split("=");
+
+         if(splitted[0] == name)
+          {
+            return splitted[1];
+          }
+          i++;
+       }
+       return false;
 }
 
 });

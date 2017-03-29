@@ -62,7 +62,7 @@
 			<% @media2 =galerie.image.url(:medium) %>
 			<% @media3 = "picture" %>
 			<% end %>
-            <div class="col-md-4">
+            <div class="col-md-20">
               <div class="yt_video thumbnail">
 
 				<!-- MODAL http://azmind.com/bootstrap-tutorial-modal-video -->
@@ -89,7 +89,7 @@
 				<%= @media2 %>
                 <%= link_to image_tag(@media2,
                                       class: 'img-rounded'),
-                            "?uid=#{@media3}&pic=#{@media2}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{@media3}"} %>
+                            "?uid=#{@media3}&pic=#{@media}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{@media3}"} %>
               </div>
             </div>
           <% end %>
