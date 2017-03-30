@@ -43,11 +43,11 @@
 		</div>
 <!--DEBUT-->
 <%= render "shared/modal" %>
-<% if @medias.any? %>
+<% if @tests.any? %>
   <div class="container">
     <h1>Latest videos</h1>
     <div id="player-wrapper"></div>
-    <% @medias.each  do |model| %>
+    <% @tests.each  do |model| %>
       <div class="row">
         <% model.each do |galerie| %>
           <% if galerie %>
