@@ -5,7 +5,6 @@ jQuery(document).ready(function() {
 
   var href = $(this).attr('href');
 	var uid = gup("uid",href);
-  
 
 
     var link = "https://www.youtube.com/embed/"+uid;

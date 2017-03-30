@@ -2,7 +2,7 @@ class GaleriesController < ApplicationController
   def index
     @galeries = Galerie.order('created_at DESC')
     @pictures = Picture.order('created_at DESC')
-    @uid = ""
+    @medias = (@galeries + @pictures).sort_by { |model| model.created_at }.in_groups_of(3)
 
   end
 

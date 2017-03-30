@@ -42,54 +42,21 @@
 			</div>
 		</div>
 <!--DEBUT-->
-<% @medias = (@galeries + @pictures) %>
-
-		<% if @medias.any? %>
+<%= render "shared/modal" %>
+<% if @medias.any? %>
   <div class="container">
     <h1>Latest videos</h1>
     <div id="player-wrapper"></div>
-    <% @medias.sort_by { |model| model.created_at }.in_groups_of(3) do |model| %>
+    <% @medias.each  do |model| %>
       <div class="row">
         <% model.each do |galerie| %>
           <% if galerie %>
-
-          	<% if galerie.class.name == "Galerie" %>
-			<% @media = "https://www.youtube.com/embed/<%= galerie.uid" %>
-			<% @media2 ="https://img.youtube.com/vi/#{galerie.uid}/mqdefault.jpg" %>
-			<% @media3 = galerie.uid %>
-			<% else %>
-			<% @media = galerie.image.url(:large) %>
-			<% @media2 =galerie.image.url(:medium) %>
-			<% @media3 = "picture" %>
-			<% end %>
             <div class="col-md-20">
               <div class="yt_video thumbnail">
-
-				<!-- MODAL http://azmind.com/bootstrap-tutorial-modal-video -->
-				<div class="modal fade" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
-				    <div class="modal-dialog" role="document">
-				        <div class="modal-content">
-				            <div class="modal-header">
-				                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				                    <span aria-hidden="true">&times;</span>
-				                </button>
-				            </div>
-				            <div class="modal-body">
-				                <div class="modal-video">
-				                    <div class="embed-responsive embed-responsive-16by9">
-				                        <iframe id="iframe-modal" "class="embed-responsive-item" src= "@media"
-				                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				                    </div>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-
-				<%= @media2 %>
-                <%= link_to image_tag(@media2,
+              
+                <%= link_to image_tag(galerie.media2,
                                       class: 'img-rounded'),
-                            "?uid=#{@media3}&pic=#{@media}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{@media3}"} %>
+                            "?uid=#{galerie.media3}&pic=#{galerie.media}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{galerie.media3}"} %>
               </div>
             </div>
           <% end %>
