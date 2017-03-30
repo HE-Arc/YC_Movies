@@ -33,4 +33,20 @@ footer > div{
   margin: 0 auto;
 }
 
+#logo_facebook {
+  height: 35px;
+  width: 35px;
+  background-image: url( asset-path("facebook_icon.png") );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.in_line_block{
+  display: inline-block;
+}
+
+.vertical-mid{
+  vertical-align: middle;
+}
+
 //
