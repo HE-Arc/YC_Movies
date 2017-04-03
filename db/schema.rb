@@ -21,44 +21,14 @@ ActiveRecord::Schema.define(version: 20170313150443) do
     t.string   "entreprise"
     t.string   "email"
     t.string   "tel"
-    t.text     "place"
     t.text     "availabilities"
     t.string   "typeofproduct"
     t.text     "product"
     t.time     "length"
     t.string   "interview"
-    t.string   "month"
-    t.integer  "day"
     t.text     "other"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.decimal  "price"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
-
-  create_table "products_sizes", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "size_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_products_sizes_on_product_id", using: :btree
-    t.index ["size_id"], name: "index_products_sizes_on_size_id", using: :btree
-  end
-
-  create_table "sizes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

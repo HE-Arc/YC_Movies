@@ -39,5 +39,6 @@ class PrestationOrder < ApplicationRecord
 	validates :product, presence: true, length: { maximum: 500 }, :if => lambda { |o| o.current_step == 3 }
 	validates :length, presence: true, :if => lambda { |o| o.current_step == 3 }
 	validates :other, length: { maximum: 500 }, allow_blank: true, :if => lambda { |o| o.current_step == 3 }
+	validates :interview, allow_blank: true, length: { is: 0 }, :if => lambda { |o| o.current_step == 4 }
 
 end

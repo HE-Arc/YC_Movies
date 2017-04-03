@@ -65,14 +65,6 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :place, "Lieu du déroulement du projet, type d'accès (voiture, bus), etc...  *", :class => "control-label col-xs-20" %>
-              <div class="input-group col-xs-40">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
-                <%= f.text_area :place, {:rows => "5", :placeholder => "près du chêne au centre du village, en voiture se parker 50m en direction de ...", :class => "form-control"} %>
-              </div>
-            </div>
-
-            <div class="form-group">
               <%= f.label :availabilities, "Disponibilités pour un éventuel rendez-vous *", :class => "control-label col-xs-20" %>
               <div class="input-group col-xs-40">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -92,51 +84,41 @@
           <div class="panel-body">
 
             <div class="form-group">
-              <%= f.label :typeofproduct, "Type de produit *", :class => "control-label col-xs-20" %>
+              <%= f.label :typeofproduct, "Type de prestation ", :class => "control-label col-xs-20" %>
               <div class="input-group col-xs-40">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <%= f.select :typeofproduct, @prestation_order.typesofproduct, {}, { :class => "form-control" } %>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
+                <%= f.select :typeofproduct, PrestationOrder.typesofproduct, {}, {:disabled => true,  :class => "form-control" } %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :product, "Produit *", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-screenshot"></span></span>
+                <%= f.text_area :product, {:required => true, :rows => "5", :placeholder => "Produit à promouvoir (établissement, fête, bar à cocktail, bonne cuisine, …)", :class => "form-control"} %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :length, "Durée de la vidéo [min]:[sec] *", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                <%= f.time_select :length, { :include_seconds => true, :discard_hour => true}, {:class => "form-control form-length"} %>
 
               </div>
             </div>
 
-
-
-
+            <div class="form-group">
+              <%= f.label :other, "Remarques", :class => "control-label col-xs-20" %>
+              <div class="input-group col-xs-40">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                <%= f.text_area :other, {:rows => "5", :placeholder => "Remarques éventuelles (facultatif) : un champ n'est pas clair, une idée, une proposition, etc...", :class => "form-control"} %>
+              </div>
+            </div>
 
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="field">
-      <%= f.label :product %>
-      <%= f.text_area :product %>
-    </div>
-
-    <div class="field">
-      <%= f.label :length %>
-      <%= f.time_select :length, {:include_seconds => true, :default => {:hour => '10', :minute => '30'}}  %>
-    </div>
-
-    <div class="field">
-      <%= f.label :interview %>
-      <%= f.text_field :interview %>
-    </div>
-
-    <div class="field">
-      <%= f.label :month %>
-      <%= f.month_field :month %>
-    </div>
-
-    <div class="field">
-      <%= f.label :day %>
-      <%= f.number_field :day, {:in => 1..31} %>
-    </div>
-
-    <div class="field">
-      <%= f.label :other %>
-      <%= f.text_area :other %>
     </div>
 
     <div class="actions">

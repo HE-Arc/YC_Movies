@@ -10,14 +10,10 @@
       <th>Entreprise</th>
       <th>Email</th>
       <th>Tel</th>
-      <th>Place</th>
       <th>Availabilities</th>
       <th>Typeofproduct</th>
       <th>Product</th>
       <th>Length</th>
-      <th>Interview</th>
-      <th>Month</th>
-      <th>Day</th>
       <th>Other</th>
       <th colspan="3"></th>
     </tr>
@@ -31,14 +27,10 @@
         <td><%= prestation_order.entreprise %></td>
         <td><%= prestation_order.email %></td>
         <td><%= prestation_order.tel %></td>
-        <td><%= prestation_order.place %></td>
         <td><%= prestation_order.availabilities %></td>
         <td><%= prestation_order.typeofproduct %></td>
         <td><%= prestation_order.product %></td>
         <td><%= prestation_order.length.strftime("%M:%S") %></td>
-        <td><%= prestation_order.interview %></td>
-        <td><%= t(:"date.month_names")[prestation_order.month.to_i]  %></td>
-        <td><%= prestation_order.day %></td>
         <td><%= prestation_order.other %></td>
         <td><%= link_to 'Show', prestation_order %></td>
         <td><%= link_to 'Edit', edit_prestation_order_path(prestation_order) %></td>

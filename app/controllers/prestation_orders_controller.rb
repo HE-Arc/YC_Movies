@@ -140,7 +140,7 @@ class PrestationOrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def prestation_order_params
       if params[:prestation_order]
-        params.require(:prestation_order).permit(:name, :firstname, :entreprise, :email, :tel, :place, :availabilities, :typeofproduct, :product, :length, :interview, :month, :day, :other)
+        params.require(:prestation_order).permit(:name, :firstname, :entreprise, :email, :tel, :availabilities, :typeofproduct, :product, :length, :other, :interview)
       end
     end
 end
