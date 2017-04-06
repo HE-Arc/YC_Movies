@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+/*jQuery(document).ready(function() {
 	$('#btn-videos').on('click', function(e){
     e.preventDefault();
     $.ajax({
@@ -9,3 +9,4 @@ jQuery(document).ready(function() {
     });
 	});
 });
+*/

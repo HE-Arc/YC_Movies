@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 20170323232623) do
     t.index ["uid"], name: "index_galeries_on_uid", using: :btree
   end
 
+  create_table "photosvideos", force: :cascade do |t|
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_photosvideos_on_imageable_type_and_imageable_id", using: :btree
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false

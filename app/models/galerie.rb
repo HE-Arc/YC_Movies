@@ -1,4 +1,5 @@
 class Galerie < ApplicationRecord
+	has_many :photosvideos, as: :imageable
  attr_accessor :mylink #attribut virtuel
 
 	def media
@@ -17,8 +18,13 @@ class Galerie < ApplicationRecord
   YT_LINK_FORMAT = /\A.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*\z/i
 
     before_create :before_add_to_galerie
+    after_create :after_add_to_galerie
 
   private
+  def after_add_to_galerie
+  	self.photosvideos.create!
+  end
+
     def before_add_to_galerie
     uid = @mylink.match(YT_LINK_FORMAT)
 

@@ -13,10 +13,6 @@ permit_params :mylink
 #   permitted
 # end
 
-  controller do
-    actions :all, :except => [:edit]
-  end
-
 
  form do |f|
    f.inputs do

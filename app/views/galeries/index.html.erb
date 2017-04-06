@@ -5,7 +5,19 @@
 				<div class="col-md-18 col-lg-18" id="col-photo-video_id">
 					<div class="btn-group btn-group-md">
 
-						<button id="btn-images" class="btn btn-default" type="button">
+
+						<%= link_to show_images_path, :remote => true, :id => "btn-images", :class => "btn btn-default" do %>
+						  <em class="glyphicon glyphicon-picture"></em> Images
+						<% end %>
+
+						<%= link_to show_videos_path, :remote => true, :id => "btn-videos", :class => "btn btn-default" do %>
+						  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
+						<% end %>
+						<%= link_to show_both_path, :remote => true, :id => "btn-both", :class => "btn btn-default" do %>
+						  <em class="glyphicon glyphicon-duplicate"></em> Les 2
+						<% end %>
+
+						<!--<button id="btn-images" class="btn btn-default" type="button">
 							<em class="glyphicon glyphicon-picture"></em> Images
 						</button>
 						<button id="btn-videos" class="btn btn-default" type="button">
@@ -13,7 +25,7 @@
 						</button>
 						<button id="btn-both" class="btn btn-default active" type="button">
 							<em class="glyphicon glyphicon-duplicate"></em> Les 2
-						</button>
+						</button>-->
 
 					</div>
 				</div>
@@ -43,28 +55,9 @@
 		</div>
 <!--DEBUT-->
 <%= render "shared/modal" %>
-<% if @medias.any? %>
-  <div class="container">
-    <h1>Latest videos</h1>
-    <div id="player-wrapper"></div>
-    <% @medias.each  do |model| %>
-      <div class="row">
-        <% model.each do |galerie| %>
-          <% if galerie %>
-            <div class="col-md-20">
-              <div class="yt_video thumbnail">
-              
-                <%= link_to image_tag(galerie.media2,
-                                      class: 'img-rounded'),
-                            "?uid=#{galerie.media3}&pic=#{galerie.media}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{galerie.media3}"} %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+  <div id="media_filter" class="container">
+<%= render partial: 'partials/media_filter', locals: { medias: @medias} %>
+</div>
 <!--FIN-->
 		<!--
     <div class="panel-body">

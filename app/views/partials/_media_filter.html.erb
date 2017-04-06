@@ -1,0 +1,19 @@
+
+
+  <% if medias.any? %>
+    <h1>Latest videos</h1>
+    <div id="player-wrapper"></div>
+    <% medias.each  do |galerie| %>
+          <% if galerie %>
+            <div class="col-md-20">
+              <div class="yt_video thumbnail">
+              
+                <%= link_to image_tag(galerie.media2,
+                                      class: 'img-rounded'),
+                            "?uid=#{galerie.media3}&pic=#{galerie.media}", :remote => true, :class => "launch-modal",:id => "launch-modal-id", data: {"modal-id": "modal-video", "uid": "#{galerie.media3}"} %>
+              </div>
+        <% end %>
+      </div>
+    <% end %>
+    <% end %>
+
