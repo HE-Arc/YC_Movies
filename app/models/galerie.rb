@@ -19,8 +19,13 @@ class Galerie < ApplicationRecord
 
     before_create :before_add_to_galerie
     after_create :after_add_to_galerie
+    before_destroy :before_delete_to_galerie
 
   private
+  def before_delete_to_galerie
+    self.photosvideos.destroy_all
+  end
+
   def after_add_to_galerie
   	self.photosvideos.create!
   end
