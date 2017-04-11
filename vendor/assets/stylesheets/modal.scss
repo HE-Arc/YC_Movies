@@ -1,5 +1,4 @@
-/***** Modal http://azmind.com/bootstrap-tutorial-modal-video 
-le css se fait override en partie, TODO *****/
+/***** Modal http://azmind.com/bootstrap-tutorial-modal-video *****/
 
 
 
@@ -13,6 +12,10 @@ le css se fait override en partie, TODO *****/
     border: 0 ;
     border-radius: 0 ; 
     box-shadow: none ;
+}
+
+.modal-video {
+overflow-y: hidden;
 }
 
 .modal-body {
@@ -44,3 +47,4 @@ le css se fait override en partie, TODO *****/
     text-shadow: none ;
     opacity: 1 ;
 }
+

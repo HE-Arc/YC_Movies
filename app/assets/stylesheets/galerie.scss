@@ -14,7 +14,7 @@
 }
 
 .thumbnail {
-
+     margin-bottom: 0px !important;
 }
 
 .middle {
@@ -47,6 +47,22 @@
 }
 
 .launch-modal {
-      width: 302px;
+    width: 302px;
     height: 174px;
 }
+
+#medias {
+  margin: 0 auto;
+}
+
+.item {
+  display: inline-block;
+  background: #2e3338;
+}
+
+  object  {
+    width:auto;
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto\9; /* ie8 */
+  }

@@ -8,9 +8,17 @@ jQuery(document).ready(function() {
 
 
     var link = "https://www.youtube.com/embed/"+uid;
-    if(uid == "picture") link = gup("pic",href);
-    $("#iframe-modal").attr("src", link);
-    $( '#' + $(this).data('modal-id') ).modal();
+    if(uid == "picture") 
+      {
+        link = gup("pic",href);
+         $("#object-id").attr("data", link);
+        $('#modal-picture').modal();
+      }
+      else
+      {
+       $("#iframe-modal").attr("src", link);
+       $( '#' + $(this).data('modal-id') ).modal();
+      }
 	});
 
 
