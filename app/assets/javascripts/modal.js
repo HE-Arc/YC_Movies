@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
-    
-	$('.launch-modal').on('click', function(e){
+  //Il faut attacher la fonction au document ou a un élément parent !!
+  //Sinon lorsqu'on applique un filtre, il n'éxecute plus la fenêtre modal
+	$(document).on("click", ".launch-modal", function(e){
     e.preventDefault();
 
   var href = $(this).attr('href');
@@ -19,6 +20,10 @@ jQuery(document).ready(function() {
        $("#iframe-modal").attr("src", link);
        $( '#' + $(this).data('modal-id') ).modal();
       }
+        //Pour que la vidéo s'arrête
+      $("#modal-video").on('hidden.bs.modal', function (e) {
+      $("#modal-video iframe").attr("src", $("#modal-video iframe").attr("src"));
+        });
 	});
 
 

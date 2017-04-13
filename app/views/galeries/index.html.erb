@@ -13,7 +13,7 @@
 						<%= link_to show_videos_path, :remote => true, :id => "btn-videos", :class => "btn btn-default" do %>
 						  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
 						<% end %>
-						<%= link_to show_both_path, :remote => true, :id => "btn-both", :class => "btn btn-default" do %>
+						<%= link_to show_both_path, :remote => true, :id => "btn-both", :class => "btn btn-default active" do %>
 						  <em class="glyphicon glyphicon-duplicate"></em> Les 2
 						<% end %>
 
@@ -31,7 +31,18 @@
 				</div>
 				<div class="col-md-60 col-lg-42">
 					<ul class="nav nav-pills pull-right">
-						<li class="">
+
+						<% @categories.each do |c| %>
+		  					<li class="">
+							  <%= link_to show_categories_path(:id => c.id), :remote => true, :id => "btn-passion", :class => "" do %>
+							  <span class="badge pull-right"><%= @medias.where(category_id: c.id).count %></span> <%= c.name %>
+							  <% end %>
+							 </li>
+						<% end %>
+
+
+
+				<!--		<li class="">
 							 <a href="#"> <span class="badge pull-right">12</span>Passion</a>
 						</li>
 						<li>
@@ -48,7 +59,7 @@
 						</li>
 						<li class="active">
 							 <a href="#"> <span class="badge pull-right">53</span> Tous les thèmes</a>
-						</li>
+						</li>-->
 					</ul>
 				</div>
 			</div>

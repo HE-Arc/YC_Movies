@@ -1,5 +1,6 @@
 class Galerie < ApplicationRecord
 	has_many :photosvideos, as: :imageable
+  belongs_to :category
  attr_accessor :mylink #attribut virtuel
 
 	def media
@@ -7,7 +8,7 @@ class Galerie < ApplicationRecord
 	end
 
 	def media2
-		"https://img.youtube.com/vi/#{self.uid}/mqdefault.jpg"
+		"https://img.youtube.com/vi/#{self.uid}/hqdefault.jpg"
 	end
 
 	def media3
@@ -18,6 +19,7 @@ class Galerie < ApplicationRecord
   YT_LINK_FORMAT = /\A.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*\z/i
 
     before_create :before_add_to_galerie
+    before_update :before_add_to_galerie, :update_photosvideos
     after_create :after_add_to_galerie
     before_destroy :before_delete_to_galerie
 
@@ -26,8 +28,12 @@ class Galerie < ApplicationRecord
     self.photosvideos.destroy_all
   end
 
+  def update_photosvideos
+    self.photosvideos.update_all(:category_id => self.category_id)
+  end
+
   def after_add_to_galerie
-  	self.photosvideos.create!
+  	self.photosvideos.create!(:category_id => self.category_id)
   end
 
     def before_add_to_galerie
@@ -41,8 +47,6 @@ class Galerie < ApplicationRecord
       false
     elsif Galerie.where(uid: self.uid).any?
       self.errors.add(:mylink, 'is not unique.')
-      #3heures pour avoir découvert qu'il fallait rajouter ce truc ! http://stackoverflow.com/questions/23837573/rails-4-how-to-cancel-save-on-a-before-save-callback
-      #ces commentaires sont inutiles, je les supprimes pour le prochain commit 
       throw :abort
       false
     end
