@@ -4,11 +4,21 @@ class Photosvideo < ApplicationRecord
   belongs_to :type
   belongs_to :category
   accepts_nested_attributes_for :galeries, :pictures,:allow_destroy => true
-  validate :validate_category_already_exist
+  before_create :validate_category_already_exist_create
+  before_update :validate_category_already_exist_update
 
-  def validate_category_already_exist
-    errors.add(:error, "This category already exist") if Type.find(self.type_id).photosvideos.where(category_id: self.category_id).count > 1
+  def validate_category_already_exist_create
+  	if Category.find(self.category_id).photosvideos.where(type_id: self.type_id).count > 0
+      errors.add(:error, "This category already exist")
+      throw :abort
+    end
   end
-
-
+  def validate_category_already_exist_update
+  	if Category.find(self.category_id).photosvideos.where(type_id: self.type_id).count > 0
+  	  if Photosvideo.find(self.id).category.id != self.category_id
+        errors.add(:error, "This category already exist")
+        throw :abort
+      end
+    end
+  end
 end

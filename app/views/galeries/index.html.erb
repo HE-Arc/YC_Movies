@@ -35,14 +35,14 @@
 						<% @categories.each do |c| %>
 		  					<li class="" id=btn-filter<%=c.id%>>
 							  <%= link_to show_categories_path(:id => c.id), :remote => true do %>
-							  <span class="badge pull-right"><%= c.photosvideos.all.count %></span> <%= c.name %>
+							  <span class="badge pull-right"><%= Photosvideo.joins(:pictures).where(category_id: c.id).count + Photosvideo.joins(:galeries).where(category_id: c.id).count  %></span> <%= c.name %>
 							  <% end %>
 							 </li>
 						<% end %>
 
 						<li class="" id=btn-filterAll>
-							  <%= link_to show_categories_path(:id => "All"), :remote => true do %>
-							  <span class="badge pull-right"><%= Photosvideo.all.count %></span> Tous les thèmes
+							  <%= link_to show_categories_all_path, :remote => true do %>
+							  <span class="badge pull-right"><%= Photosvideo.joins(:pictures).all.count + Photosvideo.joins(:galeries).all.count  %></span> Tous les thèmes
 							  <% end %>
 						</li>
 

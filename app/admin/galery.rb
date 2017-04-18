@@ -17,51 +17,33 @@ permit_params :category_id, galeries_attributes: [:name, :mylink, :uid, :_destro
     end
   actions
 end
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
 
-
-
-  form do |f|
-    f.inputs "Ajouter une vidéo" do
-      f.input :category
-      f.semantic_errors :error
-        f.has_many :galeries, allow_destroy: true do |g|
-        	
-          if f.object.new_record?
-            g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text
-          else
-          #	g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => "https://www.youtube.com/watch?v="+Galery.find(g.object.id).uid}
-          	if g.object.id
-              g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => "https://www.youtube.com/watch?v="+Galery.find(g.object.id).uid}
-             else
-              g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text
-            end
-
-          end
-	    end
-	    actions
-    end
- end
-
-
-
-   before_build do |record|
-    record.type_id = Type.where(:name => 'Video').first.id
-   end
-
-
-    controller do |p|
-  def scoped_collection
-   Type.where(:name => 'Video').first.photosvideos.order('created_at DESC')
+form do |f|
+  f.inputs "Ajouter une vidéo" do
+    f.input :category
+    f.semantic_errors :error
+    f.has_many :galeries, allow_destroy: true do |g|
+      if f.object.new_record?
+        g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => ""}
+      else
+        if g.object.id
+          g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => "https://www.youtube.com/watch?v="+Galery.find(g.object.id).uid}
+        else
+          g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text
+        end
+      end
+	 end
+	 actions
   end
+end
 
+before_build do |record|
+  record.type_id = Type.where(:name => 'Video').first.id
+end
 
+controller do |p|
+  def scoped_collection
+    Type.where(:name => 'Video').first.photosvideos.order('created_at DESC')
+  end
 end
 end
