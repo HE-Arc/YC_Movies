@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
       }
         //Pour que la vidéo s'arrête
       $("#modal-video").on('hidden.bs.modal', function (e) {
-      $("#modal-video iframe").attr("src", $("#modal-video iframe").attr("src"));
+      $("#modal-video iframe").attr("src", "");
         });
 	});
 
