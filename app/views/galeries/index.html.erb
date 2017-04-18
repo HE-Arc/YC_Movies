@@ -33,12 +33,18 @@
 					<ul class="nav nav-pills pull-right">
 
 						<% @categories.each do |c| %>
-		  					<li class="">
-							  <%= link_to show_categories_path(:id => c.id), :remote => true, :id => "btn-passion", :class => "" do %>
-							  <span class="badge pull-right"><%= @medias.where(category_id: c.id).count %></span> <%= c.name %>
+		  					<li class="" id=btn-filter<%=c.id%>>
+							  <%= link_to show_categories_path(:id => c.id), :remote => true do %>
+							  <span class="badge pull-right"><%= c.photosvideos.all.count %></span> <%= c.name %>
 							  <% end %>
 							 </li>
 						<% end %>
+
+						<li class="" id=btn-filterAll>
+							  <%= link_to show_categories_path(:id => "All"), :remote => true do %>
+							  <span class="badge pull-right"><%= Photosvideo.all.count %></span> Tous les thèmes
+							  <% end %>
+						</li>
 
 
 
@@ -69,6 +75,7 @@
 <%= render "shared/modal" %>
   <div id="media_filter" class="container">
 <%= render partial: 'partials/media_filter', locals: { medias: @medias} %>
+<%= render partial: 'partials/media_filter', locals: { medias: @pictures} %>
 </div>
 <!--FIN-->
 		<!--

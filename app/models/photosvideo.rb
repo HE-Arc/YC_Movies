@@ -1,7 +1,14 @@
 class Photosvideo < ApplicationRecord
-	belongs_to :imageable, polymorphic: true
-	#belongs_to :galeries, foreign_key: 'imageable_id', conditions: "photosvideos.imageable_type = 'Galerie'"
-	belongs_to :picture, foreign_type: 'Picture', foreign_key: 'imageable_id'
-	belongs_to :galerie, foreign_type: 'Galerie', foreign_key: 'imageable_id'
-	#belongs_to :pictures, foreign_key: 'imageable_id', conditions: "photosvideos.imageable_type = 'Picture'"
+  has_many :pictures, :dependent => :delete_all
+  has_many :galeries, :dependent => :delete_all
+  belongs_to :type
+  belongs_to :category
+  accepts_nested_attributes_for :galeries, :pictures,:allow_destroy => true
+  validate :validate_category_already_exist
+
+  def validate_category_already_exist
+    errors.add(:error, "This category already exist") if Type.find(self.type_id).photosvideos.where(category_id: self.category_id).count > 1
+  end
+
+
 end

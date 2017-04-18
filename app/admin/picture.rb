@@ -1,4 +1,4 @@
-ActiveAdmin.register Picture do
+ActiveAdmin.register Photosvideo, as: 'Picture' do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -12,22 +12,40 @@ ActiveAdmin.register Picture do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :image, :category_id
-  index do
+  permit_params :type_id, :category_id, pictures_attributes: [:id,:name, :_destroy, :image]
+  index do |p| 
 	selectable_column
-	column  :image_file_name
-	column :created_at
-	column :image_file_size
     column :category
-    actions defaults: true
-  end  
+    column :pictures do |p|
+  	  table_for p.pictures.order('created_at DESC') do
+  		column do |c|
+  			c.image_file_name
+  		end
+      end
+    end
+  actions
+end
 
   form multipart: true do |f|
     f.inputs "Ajouter une image" do
-      f.input :image, required: false
       f.input :category
+      f.semantic_errors :error
+        f.has_many :pictures, allow_destroy: true do |f|
+        f.input :image, required: false
+	    end
     end
     f.actions
-end
+ end
 
+
+   before_build do |record|
+    record.type_id = Type.where(:name => 'Picture').first.id
+  end
+
+   controller do |p|
+    def scoped_collection
+   Type.where(:name => 'Picture').first.photosvideos.order('created_at DESC')
+  end
+
+end
 end

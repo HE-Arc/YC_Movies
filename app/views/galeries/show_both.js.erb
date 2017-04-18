@@ -1,4 +1,5 @@
 $("#media_filter").html("<%= escape_javascript(render partial: 'partials/media_filter', locals: { medias: @selected } ) %>"); 
+$("#media_filter").append("<%= escape_javascript(render partial: 'partials/media_filter', locals: { medias: @pictures } ) %>"); 
 $("#btn-images").attr("class","btn btn-default");
 $("#btn-videos").attr("class","btn btn-default");
 $("#btn-both").attr("class","btn btn-default active");

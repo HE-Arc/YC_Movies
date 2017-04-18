@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413014118) do
+ActiveRecord::Schema.define(version: 20170417122026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,18 +55,16 @@ ActiveRecord::Schema.define(version: 20170413014118) do
   create_table "galeries", force: :cascade do |t|
     t.string   "uid"
     t.datetime "created_at"
-    t.integer  "category_id"
-    t.index ["category_id"], name: "index_galeries_on_category_id", using: :btree
-    t.index ["uid"], name: "index_galeries_on_uid", using: :btree
+    t.integer  "photosvideo_id"
+    t.index ["photosvideo_id"], name: "index_galeries_on_photosvideo_id", using: :btree
   end
 
   create_table "photosvideos", force: :cascade do |t|
-    t.string   "imageable_type"
-    t.integer  "imageable_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "category_id"
-    t.index ["imageable_type", "imageable_id"], name: "index_photosvideos_on_imageable_type_and_imageable_id", using: :btree
+    t.integer  "type_id"
+    t.index ["type_id"], name: "index_photosvideos_on_type_id", using: :btree
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -77,7 +75,9 @@ ActiveRecord::Schema.define(version: 20170413014118) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "category_id"
+    t.integer  "photosvideo_id"
     t.index ["category_id"], name: "index_pictures_on_category_id", using: :btree
+    t.index ["photosvideo_id"], name: "index_pictures_on_photosvideo_id", using: :btree
   end
 
   create_table "prestation_orders", force: :cascade do |t|
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(version: 20170413014118) do
     t.datetime "updated_at",     null: false
   end
 
-  add_foreign_key "galeries", "categories"
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "galeries", "photosvideos"
+  add_foreign_key "photosvideos", "types"
   add_foreign_key "pictures", "categories"
+  add_foreign_key "pictures", "photosvideos"
 end
