@@ -8,6 +8,7 @@
   <!-- le transitions-enabled ne fonctionne pas, je comprends pas pk-->
   <div id="medias" class="transitions-enabled"> 
     <div id="player-wrapper"></div>
+
     <% medias.each  do |galerie| %>
           <% if galerie %>
             <div class="item_galery">
@@ -19,6 +20,8 @@
             </div>
         <% end %>
     <% end %>
+    <div class="col-md-60 text-center">
+    <%= paginate medias %>
     </div>
-    <%= will_paginate medias,:previous_label => 'Previous', :next_label => 'Next' %>
+    </div>
     <% end %>
