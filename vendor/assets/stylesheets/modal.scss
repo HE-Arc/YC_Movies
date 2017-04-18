@@ -1,0 +1,50 @@
+/***** Modal http://azmind.com/bootstrap-tutorial-modal-video *****/
+
+
+
+.modal-backdrop.in {
+    filter: alpha(opacity=7) ;
+    opacity: 0.7 ;
+}
+
+.modal-content {
+    background: none ;
+    border: 0 ;
+    border-radius: 0 ; 
+    box-shadow: none ;
+}
+
+.modal-video {
+overflow-y: hidden;
+}
+
+.modal-body {
+    padding: 0 25px 25px 25px ;
+}
+
+.modal-header {
+    padding: 25px 25px 15px 25px ;
+    text-align: right ;
+}
+
+.modal-header, .modal-footer {
+    border: 0 ;
+}
+
+@media (min-width: 768px)
+{
+    .modal-dialog {
+        width: 800px ;
+    }
+}
+
+.modal-header .close {
+    float: none ;
+    margin: 0 ;
+    font-size: 36px ;
+    color: #fff ;
+    font-weight: 300 ;
+    text-shadow: none ;
+    opacity: 1 ;
+}
+

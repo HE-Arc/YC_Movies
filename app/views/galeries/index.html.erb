@@ -5,21 +5,50 @@
 				<div class="col-md-18 col-lg-18" id="col-photo-video_id">
 					<div class="btn-group btn-group-md">
 
-						<button class="btn btn-default" type="button">
+
+						<%= link_to show_images_path, :remote => true, :id => "btn-images", :class => "btn btn-default" do %>
+						  <em class="glyphicon glyphicon-picture"></em> Images
+						<% end %>
+
+						<%= link_to show_videos_path, :remote => true, :id => "btn-videos", :class => "btn btn-default" do %>
+						  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
+						<% end %>
+						<%= link_to show_both_path, :remote => true, :id => "btn-both", :class => "btn btn-default active" do %>
+						  <em class="glyphicon glyphicon-duplicate"></em> Les 2
+						<% end %>
+
+						<!--<button id="btn-images" class="btn btn-default" type="button">
 							<em class="glyphicon glyphicon-picture"></em> Images
 						</button>
-						<button class="btn btn-default" type="button">
+						<button id="btn-videos" class="btn btn-default" type="button">
 							<em class="glyphicon glyphicon-facetime-video"></em> Vidéos
 						</button>
-						<button class="btn btn-default active" type="button">
+						<button id="btn-both" class="btn btn-default active" type="button">
 							<em class="glyphicon glyphicon-duplicate"></em> Les 2
-						</button>
+						</button>-->
 
 					</div>
 				</div>
 				<div class="col-md-60 col-lg-42">
 					<ul class="nav nav-pills pull-right">
-						<li class="">
+
+						<% @categories.each do |c| %>
+		  					<li class="" id=btn-filter<%=c.id%>>
+							  <%= link_to show_categories_path(:id => c.id), :remote => true do %>
+							  <span class="badge pull-right"><%= c.photosvideos.all.count %></span> <%= c.name %>
+							  <% end %>
+							 </li>
+						<% end %>
+
+						<li class="" id=btn-filterAll>
+							  <%= link_to show_categories_path(:id => "All"), :remote => true do %>
+							  <span class="badge pull-right"><%= Photosvideo.all.count %></span> Tous les thèmes
+							  <% end %>
+						</li>
+
+
+
+				<!--		<li class="">
 							 <a href="#"> <span class="badge pull-right">12</span>Passion</a>
 						</li>
 						<li>
@@ -36,11 +65,20 @@
 						</li>
 						<li class="active">
 							 <a href="#"> <span class="badge pull-right">53</span> Tous les thèmes</a>
-						</li>
+						</li>-->
 					</ul>
 				</div>
 			</div>
 		</div>
+<!--DEBUT-->
+<%= render "shared/modal_picture" %>
+<%= render "shared/modal" %>
+  <div id="media_filter" class="container">
+<%= render partial: 'partials/media_filter', locals: { medias: @medias} %>
+<%= render partial: 'partials/media_filter', locals: { medias: @pictures} %>
+</div>
+<!--FIN-->
+		<!--
     <div class="panel-body">
 			<div class="row">
 				<div class="infoonhover col-xs-30 col-sm-20 col-md-10">
@@ -109,6 +147,8 @@
 
 		</div>
   </div>
+
+  -->
 
 </div>
 

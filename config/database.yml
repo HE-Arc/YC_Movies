@@ -24,7 +24,7 @@ default: &default
   port: <%= ENV.fetch("POSTGRES_PORT") { 5432 } %>
   username: <%= ENV.fetch('GROUPNAME') { 'postgres' } %>
   database: <%= ENV.fetch('GROUPNAME') { 'app' } %>
-  password: <%= ENV.fetch('PASSWORD') { '' } %>
+  password: <%= ENV.fetch('PASSWORD') { 'admin' } %>
 
 development:
   <<: *default
