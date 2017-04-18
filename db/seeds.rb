@@ -8,3 +8,6 @@
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 Type.create!(name: 'Picture')
 Type.create!(name: 'Video')
+
+Category.delete_all
+Category.create("Reportages AfterMovies Commerciales Mariages Creations".split.map { |name| {name: name} })
