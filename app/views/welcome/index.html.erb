@@ -14,6 +14,25 @@
 					</li>
 				</ol>
 				<div class="carousel-inner">
+							<% @carrousels.each_with_index do |c, i| %>
+							<% if i == 0 %>
+		  					<div class="item active">
+							  <%= image_tag(c.image1.url(:default), :class => "visible-xs-block" , :alt => "Carousel #{i}") %>
+							  <%= image_tag(c.image2.url(:default), :class => "visible-sm-block" , :alt => "Carousel #{i}") %>
+							  <%= image_tag(c.image3.url(:default), :class => "visible-md-block" , :alt => "Carousel #{i}") %>
+							  <%= image_tag(c.image4.url(:default), :class => "visible-lg-block" , :alt => "Carousel #{i}") %>
+							 </div>
+ 							<% else %>
+		  					<div class="item">
+							  <%= image_tag(c.image1.url(:default), :class => "visible-xs-block" , :alt => "Carousel #{i}") %>
+							  <%= image_tag(c.image2.url(:default), :class => "visible-sm-block" , :alt => "Carousel #{i}") %>
+							  <%= image_tag(c.image3.url(:default), :class => "visible-md-block" , :alt => "Carousel #{i}") %>
+							  <%= image_tag(c.image4.url(:default), :class => "visible-lg-block" , :alt => "Carousel #{i}") %>		
+							</div>
+							  <% end %>  				
+							
+						  <% end %>				
+					<!--
 					<div class="item active">
 						<img class="visible-xs-block" alt="Carousel First" src="<%= asset_path 'Carrousel/carrousel_1_750_350_000000.png' %>" />
 						<img class="visible-sm-block" alt="Carousel First" src="<%= asset_path 'Carrousel/carrousel_1_1220_500_000000.png' %>" />
@@ -32,6 +51,7 @@
 						<img class="visible-md-block" alt="Carousel Third" src="<%= asset_path 'Carrousel/carrousel_3_1520_550_000000.png' %>" />
 						<img class="visible-lg-block" alt="Carousel Third" src="<%= asset_path 'Carrousel/carrousel_3_1920_624_000000.png' %>" />
 					</div>
+					-->
 				</div> <a class="left carousel-control" href="#carousel-home" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-home" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
 
