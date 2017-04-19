@@ -33,6 +33,7 @@ server "server_srvz", roles: %w{app db web}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :bundle_flags, '--deployment'
 
 
 
