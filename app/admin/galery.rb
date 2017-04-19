@@ -22,7 +22,7 @@ form do |f|
   f.inputs "Ajouter une vidéo" do
     f.input :category
     f.semantic_errors :error
-    f.has_many :galeries, allow_destroy: true do |g|
+    f.has_many :galeries, heading: 'Videos',new_record: "Add new video", allow_destroy: true do |g|
       if f.object.new_record?
         g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => ""}
       else
@@ -33,7 +33,7 @@ form do |f|
         end
       end
 	 end
-	 actions
+	 action :submit, :label => "Save"
   end
 end
 

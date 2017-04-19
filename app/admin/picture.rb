@@ -33,8 +33,8 @@ end
         f.has_many :pictures, allow_destroy: true do |f|
         f.input :image, required: false
 	    end
+         action :submit, :label => "Save"
     end
-    f.actions
  end
 
 
