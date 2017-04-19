@@ -8,7 +8,7 @@ set :repo_url, "https://github.com/HE-Arc/YC_Movies.git"
 
 # Default branch is :master
 # set branch to "front-end"
-set :branch, `git rev-parse --abbrev-ref front_end`.chomp
+set :branch, `git rev-parse --abbrev-ref dev`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/home/matthieu/www/app"
