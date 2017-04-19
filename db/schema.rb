@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418152623) do
+ActiveRecord::Schema.define(version: 20170418113407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,9 @@ ActiveRecord::Schema.define(version: 20170418152623) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "category_id"
     t.integer  "photosvideo_id"
+    t.index ["category_id"], name: "index_pictures_on_category_id", using: :btree
     t.index ["photosvideo_id"], name: "index_pictures_on_photosvideo_id", using: :btree
   end
 
@@ -108,5 +110,6 @@ ActiveRecord::Schema.define(version: 20170418152623) do
 
   add_foreign_key "galeries", "photosvideos"
   add_foreign_key "photosvideos", "types"
+  add_foreign_key "pictures", "categories"
   add_foreign_key "pictures", "photosvideos"
 end
