@@ -18,7 +18,8 @@ gem 'inherited_resources', '~> 1.7'
 gem "paperclip", "~> 5.0.0"
 #Je crois vraiment que c'est la dernière : https://github.com/kristianmandrup/masonry-rails/releases
 gem 'masonry-rails', '~> 0.2.4'
-#gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+gem 'nokogiri'
 
 #for captcha
 gem "recaptcha", require: "recaptcha/rails"
@@ -26,7 +27,7 @@ group :development do
     gem 'certified', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
 
-gem 'kaminari'
+#gem 'kaminari'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
