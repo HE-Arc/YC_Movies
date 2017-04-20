@@ -13,10 +13,10 @@ gem 'jquery-turbolinks'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'pg'
 gem 'activeadmin', '~> 1.0.0.pre4'
-#gem 'devise'
 gem 'inherited_resources', '~> 1.7'
 gem "paperclip", "~> 5.0.0"
 gem 'masonry-rails', '~> 0.2.4'
+
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 gem 'nokogiri'
 gem 'devise'
@@ -27,7 +27,7 @@ group :development do
     gem 'certified', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
 
-gem 'kaminari'
+#gem 'kaminari'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
