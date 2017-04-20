@@ -17,8 +17,8 @@ gem 'inherited_resources', '~> 1.7'
 gem "paperclip", "~> 5.0.0"
 gem 'masonry-rails', '~> 0.2.4'
 
-gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
-gem 'nokogiri'
+#gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+#gem 'nokogiri'
 gem 'devise'
 
 #for captcha
