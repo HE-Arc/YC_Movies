@@ -14,10 +14,10 @@ permit_params :image1, :image2, :image3, :image4
 # end
   index do |p| 
 	selectable_column
-    column :image1_file_name
-    column :image2_file_name
-    column :image3_file_name
-    column :image4_file_name    
+    column "Image 750x350", :image1_file_name
+    column "Image 1220x500", :image2_file_name
+    column "Image 1520x550", :image3_file_name
+    column "Image 1920x624", :image4_file_name    
   actions
 end
 

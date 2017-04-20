@@ -6,12 +6,15 @@
 
 			<div class="carousel slide" id="carousel-home">
 				<ol class="carousel-indicators">
-					<li class="active" data-slide-to="0" data-target="#carousel-home">
-					</li>
-					<li data-slide-to="1" data-target="#carousel-home">
-					</li>
-					<li data-slide-to="2" data-target="#carousel-home">
-					</li>
+				<% @carrousels.each_with_index do |c, i| %>
+				<% if i == 0 %>
+				    <li class="active" data-slide-to="#{i}" data-target="#carousel-home">
+				    </li>
+				  <% else %>
+				    <li data-slide-to="#{i}" data-target="#carousel-home">
+				    </li>
+				  <% end %>
+				<% end %>
 				</ol>
 				<div class="carousel-inner">
 							<% @carrousels.each_with_index do |c, i| %>
@@ -60,6 +63,19 @@
 
 	<div class="row">
 
+	 	<% Category.order('name ASC').each_with_index do |c, i| %>
+	 	<!-- <% md = (60/Category.count).to_i %>-->
+	 	  <% if i+1 == Category.count && Category.count % 2 != 0 %>
+		    <div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
+			<a class="prestations" id="prestations_<%=i+1%>" alt="Bootstrap Image Preview" href=""></a>
+		    </div>
+	 	  <% else %>
+	 	    <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12" >
+			<a class="prestations" id="prestations_<%=i+1%>" alt="Bootstrap Image Preview" href=""></a>
+		    </div>
+		  <% end%>
+	 	<% end %>
+<!--
 		<div class="prestations-div-home col-xs-60 col-sm-30 col-md-12" >
 			<a class="prestations" id="prestations_1" alt="Bootstrap Image Preview" href=""></a>
 		</div>
@@ -74,7 +90,7 @@
 		</div>
 		<div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
 			<a class="prestations" id="prestations_5" alt="Bootstrap Image Preview" href=""></a>
-		</div>
+		</div>-->
 
 	</div>
 </div>

@@ -1,4 +1,0 @@
-$("#media_filter").html("<%= escape_javascript(render partial: 'partials/media_filter', locals: { medias: @selected } ) %>"); 
-$("#media_filter").append("<%= escape_javascript(render partial: 'partials/media_filter', locals: { medias: @pictures } ) %>"); 
-$("li[id^='btn-filter']").attr("class","");
-$("#btn-filterAll").attr("class","active");

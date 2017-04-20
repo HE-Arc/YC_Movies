@@ -1,0 +1,96 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Common variables
+@import "myvariables";
+
+
+//*********
+//
+//Carousel home
+//
+//*********
+#carousel-home {
+
+}
+
+//*********
+//
+//Prestations
+//
+//*********
+
+.prestations-div-home{
+  padding: 0 !important;
+}
+
+.prestations{
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 736px 200px;
+  min-height: 200px;
+  height: 200px;
+  display: block;
+}
+
+  <% Category.order('name ASC').each_with_index do |c, i| %>
+      #prestations_<%= i+1 %> {
+      background-image: url(<%= c.image1.url(:default) %>);
+      }
+  <% end %>
+
+@media (min-width: 768px){
+  .prestations{
+    background-size: 640px 200px;
+  }
+  <% Category.order('name ASC').each_with_index do |c, i| %>
+    <% if i+1 == Category.count && Category.count % 2 != 0 %>
+      #prestations_<%= i+1 %> {
+      background-image: url(<%= c.image4.url(:default) %>);
+      background-size: 992px 200px;
+      }
+    <% else %>
+      #prestations_<%= i+1 %> {
+      background-image: url(<%= c.image2.url(:default) %>);
+      }
+    <% end %>
+  <% end %>
+}
+
+@media (min-width: 992px){
+  .prestations{
+    background-size: 288px 200px;
+  }
+  <% Category.order('name ASC').each_with_index do |c, i| %>
+    <% if i+1 == Category.count %>
+      #prestations_<%= i+1 %> {
+      background-image: url(<%= c.image3.url(:default) %>);
+      background-size: 288px 200px;
+      }
+    <% else %>
+      #prestations_<%= i+1 %> {
+      background-image: url(<%= c.image3.url(:default) %>);
+      }
+    <% end %>
+  <% end %>
+}
+
+@media (min-width: 1442px){
+  .prestations{
+    background-size: 640px 200px;
+  }
+
+  <% Category.order('name ASC').each_with_index do |c, i| %>
+    <% if i+1 == Category.count %>
+      #prestations_<%= i+1 %> {
+      background-image: url(<%= c.image2.url(:default) %>);
+      background-size: 640px 200px;
+      }
+    <% else %>
+      #prestations_<%= i+1 %> {
+      background-image: url(<%= c.image2.url(:default ) %>);
+      }
+    <% end %>
+  <% end %>
+}

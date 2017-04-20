@@ -1,5 +1,5 @@
 
-<% if medias.any? %>
+<% if medias.try(:any?) %>
   <% if medias.first.photosvideo.type.name == "Picture" %>
     <h3> Images : </h3>
   <% elsif medias.first.photosvideo.type.name == "Video" %>
@@ -21,7 +21,6 @@
         <% end %>
     <% end %>
     <div class="col-md-60 text-center">
-    <%= paginate medias %>
     </div>
     </div>
     <% end %>
