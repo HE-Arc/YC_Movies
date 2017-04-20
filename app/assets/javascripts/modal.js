@@ -1,4 +1,9 @@
 jQuery(document).ready(function() {
+  $('#btn-images').bind('ajax:complete', function() {
+    var newURLString = location.protocol + '//' + location.host + location.pathname + "?folder=test"
+
+    window.location.href = newURLString; 
+});
   //Il faut attacher la fonction au document ou a un élément parent !!
   //Sinon lorsqu'on applique un filtre, il n'éxecute plus la fenêtre modal
 	$(document).on("click", ".launch-modal", function(e){

@@ -1,35 +1,33 @@
 class GaleriesController < ApplicationController
   def index
     @categories = Category.order('name ASC')
-    @medias = Galery.order('created_at DESC').page(params[:page]).per(6)
-    @pictures = Picture.order('created_at DESC').page(params[:page]).per(6)
-    @test = Picture.page(params[:page])
+    @medias = Galery.order('created_at DESC')
+    @pictures = Picture.order('created_at DESC')
   end
 
-  def show_videos
-  	@selected = Galery.order('created_at DESC').page(params[:page]).per(6)
-  end
 
-  def show_images
-    @selected = Picture.order('created_at DESC').page(params[:page]).per(6)
-  end
+def show_media
+  @category = params[:category]
+  @type     = params[:type]
 
-  def show_both
-    @selected = Galery.order('created_at DESC').page(params[:page]).per(6)
-    @pictures = Picture.order('created_at DESC').page(params[:page]).per(6)
-  end
+  @pictures = media(Picture) if @type == "pictures"
+  @videos   = media(Galery) if @type == "videos"
 
-  def show_categories
-    @selected = Galery.joins(:photosvideo).where("photosvideos.category_id = ?", params[:id]).page(params[:page]).per(6)
-   #@selected = Category.find(params[:id]).photosvideos.order('created_at DESC')
-   @pictures = Picture.joins(:photosvideo).where("photosvideos.category_id = ?", params[:id]).page(params[:page]).per(6)
-   @active = params[:id];
-   @categories = Category.order('name ASC')
+  @category = "All" if @category.blank?
+  @type = "both" if @type.blank?
+  if  @type == "both"
+    @pictures = media(Picture)
+    @videos   = media(Galery) 
   end
+end
 
-  def show_categories_all
-    @selected = Galery.order('created_at DESC').page(params[:page]).per(6)
-    @pictures = Picture.order('created_at DESC').page(params[:page]).per(6)
+end
+
+private
+def media(model)
+  if @category.blank?
+    model.order('created_at DESC')
+  else
+     model.joins(:photosvideo).where("photosvideos.category_id = ?", @category)
   end
-
 end

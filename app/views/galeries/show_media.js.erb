@@ -1,0 +1,15 @@
+$("#media_filter").html("<%= escape_javascript(render partial: 'partials/media_filter', locals: { medias: @videos} ) %>"); 
+$("#media_filter").append("<%= escape_javascript(render partial: 'partials/media_filter', locals: { medias: @pictures } ) %>");
+$('#btn-pictures').attr('href',"<%= show_media_path(type: 'pictures', category: @category) %>");
+$('#btn-videos').attr('href',"<%= show_media_path(type: 'videos', category: @category) %>");
+$('#btn-both').attr('href',"<%= show_media_path(type: 'both', category: @category) %>");
+$('.category-id').each(function(index, value) {
+  	$(this).attr("href",'/show_media?type=<%= @type %>' + '&category=' + $(this).attr("data-category-id"));
+//alert( $(this).attr("href"));
+});
+$("li[id^='btn-filter']").attr("class","");
+$("#btn-filter<%=@category%>").attr("class","active");
+$("#btn-pictures").attr("class","btn btn-default");
+$("#btn-videos").attr("class","btn btn-default");
+$("#btn-both").attr("class","btn btn-default");
+$("#btn-<%=@type%>").attr("class","btn btn-default active");

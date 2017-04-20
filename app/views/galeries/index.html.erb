@@ -6,16 +6,28 @@
 					<div class="btn-group btn-group-md">
 
 
-						<%= link_to show_images_path, :remote => true, :id => "btn-images", :class => "btn btn-default" do %>
+						<!--<%= link_to show_images_path, :remote => true, :id => "btn-images", :class => "btn btn-default" do %>
 						  <em class="glyphicon glyphicon-picture"></em> Images
 						<% end %>
 
 						<%= link_to show_videos_path, :remote => true, :id => "btn-videos", :class => "btn btn-default" do %>
 						  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
+						<% end %> -->
+
+						<%= link_to show_media_path(type: "pictures"), remote: true, id: "btn-pictures", class: "btn btn-default" do %>
+   					      <em class="glyphicon glyphicon-picture"></em> Pictures
 						<% end %>
-						<%= link_to show_both_path, :remote => true, :id => "btn-both", :class => "btn btn-default active" do %>
+
+						<%= link_to show_media_path(type: "videos"), remote: true, id: "btn-videos", class: "btn btn-default" do %>
+    					  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
+						<% end %>
+
+						<%= link_to show_media_path(type: "both"), :remote => true, :id => "btn-both", :class => "btn btn-default active" do %>
 						  <em class="glyphicon glyphicon-duplicate"></em> Les 2
 						<% end %>
+
+
+
 
 						<!--<button id="btn-images" class="btn btn-default" type="button">
 							<em class="glyphicon glyphicon-picture"></em> Images
@@ -32,18 +44,26 @@
 				<div class="col-md-60 col-lg-42">
 					<ul class="nav nav-pills pull-right">
 
-						<% @categories.each do |c| %>
+						<!--<% @categories.each do |c| %>
 		  					<li class="" id=btn-filter<%=c.id%>>
 							  <%= link_to show_categories_path(:id => c.id), :remote => true do %>
 							  <span class="badge pull-right"><%= Photosvideo.joins(:pictures).where(category_id: c.id).count + Photosvideo.joins(:galeries).where(category_id: c.id).count  %></span> <%= c.name %>
 							  <% end %>
 							 </li>
-						<% end %>
+						<% end %>-->
 
-						<li class="" id=btn-filterAll>
-							  <%= link_to show_categories_all_path, :remote => true do %>
-							  <span class="badge pull-right"><%= Photosvideo.joins(:pictures).all.count + Photosvideo.joins(:galeries).all.count  %></span> Tous les thèmes
-							  <% end %>
+						<% @categories.each do |c| %>
+  						  <li class="" id="btn-filter<%= c.id %>">
+   						  <%= link_to show_media_path(category: c.id), remote: true, "data-category-id": c.id, class: "category-id" do %>
+    					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).where(category_id: c.id).count + Photosvideo.joins(:galeries).where(category_id: c.id).count  %></span> <%= c.name %>
+                              <% end %>
+                              </li>
+                            <% end %>
+
+						<li class="active " id=btn-filterAll>
+   						  <%= link_to show_media_path(category: 'All'), remote: true, "data-category-id": 'All', class: "category-id" do %>
+    					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).all.count + Photosvideo.joins(:galeries).all.count  %></span> Tous les thèmes
+                              <% end %>
 						</li>
 
 
