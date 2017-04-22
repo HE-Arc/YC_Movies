@@ -67,11 +67,12 @@
 	 	<!-- <% md = (60/Category.count).to_i %>-->
 	 	  <% if i+1 == Category.count && Category.count % 2 != 0 %>
 		    <div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
-			<a class="prestations" id="prestations_<%=i+1%>" alt="Bootstrap Image Preview" href=""></a>
+			<!-- <a class="prestations" id="prestations_<%=i+1%>" alt="Bootstrap Image Preview" href=""></a>-->
+			 <%= link_to "", show_galery_path(category: c.id), :class => "prestations", :id => "prestations_#{c.id}", :alt => "Bootstrap Image Preview"  %>
 		    </div>
 	 	  <% else %>
 	 	    <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12" >
-			<a class="prestations" id="prestations_<%=i+1%>" alt="Bootstrap Image Preview" href=""></a>
+			<%= link_to "", show_galery_path(category: c.id), :class => "prestations", :id => "prestations_#{c.id}", :alt => "Bootstrap Image Preview"  %>
 		    </div>
 		  <% end%>
 	 	<% end %>

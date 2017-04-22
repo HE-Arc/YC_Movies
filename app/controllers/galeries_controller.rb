@@ -1,12 +1,10 @@
 class GaleriesController < ApplicationController
   def index
+    respond_to do |format|
+      format.html
+      format.js 
+    end
     @categories = Category.order('name ASC')
-    @medias = Galery.order('created_at DESC')
-    @pictures = Picture.order('created_at DESC')
-  end
-
-
-def show_media
   @category = params[:category]
   @type     = params[:type]
 
@@ -21,11 +19,12 @@ def show_media
   end
 end
 
+
 end
 
 private
 def media(model)
-  if @category.blank?
+  if @category == "All" || @category.blank?
     model.order('created_at DESC')
   else
      model.joins(:photosvideo).where("photosvideos.category_id = ?", @category)

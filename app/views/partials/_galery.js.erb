@@ -1,0 +1,8 @@
+<script>
+$("li[id^='btn-filter']").attr("class","");
+$("#btn-filter<%=@category%>").attr("class","active");
+$("#btn-pictures").attr("class","btn btn-default");
+$("#btn-videos").attr("class","btn btn-default");
+$("#btn-both").attr("class","btn btn-default");
+$("#btn-<%=@type%>").attr("class","btn btn-default active");
+</script>

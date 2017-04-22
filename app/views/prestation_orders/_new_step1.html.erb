@@ -20,30 +20,19 @@
     <div class="panel-body">
 
       <div class="row">
-
-        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-          <%= f.submit PrestationOrder.typesofproduct[0] , {:id => "prestation_1_choose_theme", :class => "prestations_choose_theme"} %>
-        </div>
-
-        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-          <%= f.submit PrestationOrder.typesofproduct[1] , {:id => "prestation_2_choose_theme", :class => "prestations_choose_theme"} %>
-        </div>
-
-        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-          <%= f.submit PrestationOrder.typesofproduct[2] , {:id => "prestation_3_choose_theme", :class => "prestations_choose_theme"} %>
-        </div>
-
-        <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
-          <%= f.submit PrestationOrder.typesofproduct[3], {:id => "prestation_4_choose_theme", :class => "prestations_choose_theme"} %>
-        </div>
-
-        <div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
-          <%= f.submit PrestationOrder.typesofproduct[4], {:id => "prestation_5_choose_theme", :class => "prestations_choose_theme"} %>
-        </div>
+          <% Category.order('name ASC').each_with_index do |c, i| %>
+            <% if i+1 == Category.count && Category.count % 2 != 0 %>
+              <div class="prestations-div-home col-xs-60 col-sm-60 col-md-12">
+              <%= f.submit PrestationOrder.typesofproduct[0] , {:id => "prestation_#{c.id}_choose_theme", :class => "prestations_choose_theme"} %>
+              </div>
+            <% else %>
+              <div class="prestations-div-home col-xs-60 col-sm-30 col-md-12">
+              <%= f.submit PrestationOrder.typesofproduct[0] , {:id => "prestation_#{c.id}_choose_theme", :class => "prestations_choose_theme"} %>
+              </div>
+            <% end %>
+          <% end %>
 
       </div>
-
-      <div class "row">
         <div clas="col">
           <p>
             « La demande de prestation ci-dessus ne vous engage à payer aucun frais.

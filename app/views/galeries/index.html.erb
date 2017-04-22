@@ -14,15 +14,15 @@
 						  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
 						<% end %> -->
 
-						<%= link_to show_media_path(type: "pictures"), remote: true, id: "btn-pictures", class: "btn btn-default" do %>
+						<%= link_to show_galery_path(type: "pictures", category: params[:category]), remote: false, id: "btn-pictures", class: "btn btn-default" do %>
    					      <em class="glyphicon glyphicon-picture"></em> Pictures
 						<% end %>
 
-						<%= link_to show_media_path(type: "videos"), remote: true, id: "btn-videos", class: "btn btn-default" do %>
+						<%= link_to show_galery_path(type: "videos", category: params[:category]), remote: false, id: "btn-videos", class: "btn btn-default" do %>
     					  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
 						<% end %>
 
-						<%= link_to show_media_path(type: "both"), :remote => true, :id => "btn-both", :class => "btn btn-default active" do %>
+						<%= link_to show_galery_path(type: "both", category: params[:category]), :remote => false, :id => "btn-both", :class => "btn btn-default active" do %>
 						  <em class="glyphicon glyphicon-duplicate"></em> Les 2
 						<% end %>
 
@@ -54,14 +54,14 @@
 
 						<% @categories.each do |c| %>
   						  <li class="" id="btn-filter<%= c.id %>">
-   						  <%= link_to show_media_path(category: c.id), remote: true, "data-category-id": c.id, class: "category-id" do %>
+   						  <%= link_to show_galery_path(category: c.id, type: params[:type]), remote: false, "data-category-id": c.id, class: "category-id" do %>
     					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).where(category_id: c.id).count + Photosvideo.joins(:galeries).where(category_id: c.id).count  %></span> <%= c.name %>
                               <% end %>
                               </li>
                             <% end %>
 
 						<li class="active " id=btn-filterAll>
-   						  <%= link_to show_media_path(category: 'All'), remote: true, "data-category-id": 'All', class: "category-id" do %>
+   						  <%= link_to show_galery_path(category: 'All', type: params[:type]), remote: false, "data-category-id": 'All', class: "category-id" do %>
     					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).all.count + Photosvideo.joins(:galeries).all.count  %></span> Tous les thèmes
                               <% end %>
 						</li>
@@ -94,7 +94,7 @@
 <%= render "shared/modal_picture" %>
 <%= render "shared/modal" %>
   <div id="media_filter" class="container">
-<%= render partial: 'partials/media_filter', locals: { medias: @medias} %>
+<%= render partial: 'partials/media_filter', locals: { medias: @videos} %>
 <%= render partial: 'partials/media_filter', locals: { medias: @pictures} %>
 </div>
 <!--FIN-->
@@ -170,7 +170,6 @@
 
   -->
 
-	</div>
 </div>
 
 
@@ -232,3 +231,4 @@
 	</div>
 
 </div>
+<%= render partial: 'partials/galery', formats: [:js] %>

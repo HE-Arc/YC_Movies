@@ -35,8 +35,8 @@
 }
 
   <% Category.order('name ASC').each_with_index do |c, i| %>
-      #prestations_<%= i+1 %> {
-      background-image: url(<%= c.image1.url(:default) %>);
+      #prestations_<%= c.id %> {
+      background-image: url(<%= asset_path c.image1.url(:default) %>);
       }
   <% end %>
 
@@ -46,13 +46,13 @@
   }
   <% Category.order('name ASC').each_with_index do |c, i| %>
     <% if i+1 == Category.count && Category.count % 2 != 0 %>
-      #prestations_<%= i+1 %> {
-      background-image: url(<%= c.image4.url(:default) %>);
+      #prestations_<%= c.id %> {
+      background-image: url(<%= asset_path c.image4.url(:default) %>);
       background-size: 992px 200px;
       }
     <% else %>
-      #prestations_<%= i+1 %> {
-      background-image: url(<%= c.image2.url(:default) %>);
+      #prestations_<%= c.id %> {
+      background-image: url(<%= asset_path c.image2.url(:default) %>);
       }
     <% end %>
   <% end %>
@@ -64,13 +64,13 @@
   }
   <% Category.order('name ASC').each_with_index do |c, i| %>
     <% if i+1 == Category.count %>
-      #prestations_<%= i+1 %> {
-      background-image: url(<%= c.image3.url(:default) %>);
+      #prestations_<%= c.id %> {
+      background-image: url(<%= asset_path c.image3.url(:default) %>);
       background-size: 288px 200px;
       }
     <% else %>
-      #prestations_<%= i+1 %> {
-      background-image: url(<%= c.image3.url(:default) %>);
+      #prestations_<%= c.id %> {
+      background-image: url(<%= asset_path c.image3.url(:default) %>);
       }
     <% end %>
   <% end %>
@@ -83,13 +83,13 @@
 
   <% Category.order('name ASC').each_with_index do |c, i| %>
     <% if i+1 == Category.count %>
-      #prestations_<%= i+1 %> {
-      background-image: url(<%= c.image2.url(:default) %>);
+      #prestations_<%= c.id %> {
+      background-image: url(<%= asset_path c.image2.url(:default) %>);
       background-size: 640px 200px;
       }
     <% else %>
-      #prestations_<%= i+1 %> {
-      background-image: url(<%= c.image2.url(:default ) %>);
+      #prestations_<%= c.id %> {
+      background-image: url(<%= asset_path c.image2.url(:default ) %>);
       }
     <% end %>
   <% end %>
