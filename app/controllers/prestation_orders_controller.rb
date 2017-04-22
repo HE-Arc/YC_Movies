@@ -64,9 +64,13 @@ class PrestationOrdersController < ApplicationController
       session[:prestation_order_step] = @prestation_order.current_step
     elsif @prestation_order.valid?
       if @prestation_order.last_step?
-        if verify_recaptcha(model: @prestation_order) && @prestation_order.save
-          captcha_success = true
-        end
+	    if Captcha.first.validate == true
+          if verify_recaptcha(model: @prestation_order) && @prestation_order.save
+            captcha_success = true
+          end
+		else
+		  captcha_success = true
+		end		
       else
         @prestation_order.next_step
         session[:prestation_order_step] = @prestation_order.current_step
