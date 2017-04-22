@@ -111,8 +111,9 @@
     </div>
   </div>
 </div>
-
+<% if Captcha.first.activate == true %>
 <%= recaptcha_tags %>
+<% end %>
 <%= f.text_field :interview, {:style =>"visibility: hidden;"} %>
 
 <p>

@@ -33,7 +33,10 @@ config.assets.precompile += %w[active_admin.css active_admin.js]
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-set :bundle_flags, '--deployment'
+
+# uncomment following for bundle install debug :
+#set :bundle_flags, '--deployment'
+
 
 
 
@@ -65,4 +68,3 @@ set :bundle_flags, '--deployment'
 #   }
 
 set :tmp_dir, "/tmp/" + ENV['USER']
-
