@@ -1,10 +1,6 @@
 class GaleriesController < ApplicationController
   def index
-    respond_to do |format|
-      format.html
-      format.js 
-    end
-    @categories = Category.order('name ASC')
+  @categories = Category.order('name ASC')
   @category = params[:category]
   @type     = params[:type]
 

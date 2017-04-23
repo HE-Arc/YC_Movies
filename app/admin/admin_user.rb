@@ -4,7 +4,6 @@ ActiveAdmin.register AdminUser do
 
   index do
     selectable_column
-    id_column
     column :email
     column :current_sign_in_at
     column :sign_in_count
@@ -26,6 +25,17 @@ ActiveAdmin.register AdminUser do
       f.input :password_confirmation
     end
     f.actions
+  end
+
+  show do |p| 
+    attributes_table do
+    row :email
+    row :current_sign_in_at
+    row :sign_in_count
+    row :created_at
+    row :issuperadmin
+    end
+  active_admin_comments
   end
 
   controller do

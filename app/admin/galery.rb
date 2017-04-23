@@ -8,7 +8,7 @@ permit_params :category_id, galeries_attributes: [:name, :mylink, :uid, :_destro
   index do |p| 
 	selectable_column
     column :category
-    column :galeries do |p|
+    column "Videos", :galeries do |p|
   	  table_for p.galeries.order('created_at DESC') do
   		column do |c|
   			link_to "https://www.youtube.com/watch?v="+c.uid, "https://www.youtube.com/watch?v="+c.uid
@@ -16,6 +16,20 @@ permit_params :category_id, galeries_attributes: [:name, :mylink, :uid, :_destro
       end
     end
   actions
+end
+
+show do |p| 
+  attributes_table do
+    row :category
+    panel "Videos" do
+      table_for p.galeries do
+        column do |c|
+           link_to "https://www.youtube.com/watch?v="+c.uid, "https://www.youtube.com/watch?v="+c.uid
+        end     
+      end
+    end
+  end
+  active_admin_comments
 end
 
 form do |f|
