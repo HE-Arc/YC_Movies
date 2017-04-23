@@ -23,6 +23,6 @@ def media(model)
   if @category == "All" || @category.blank?
     model.order('created_at DESC')
   else
-     model.joins(:photosvideo).where("photosvideos.category_id = ?", @category)
+     model.joins(:photosvideo).where("photosvideos.category_id = ?", @category).order('created_at DESC')
   end
 end
