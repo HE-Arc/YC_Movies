@@ -10,7 +10,7 @@
 server "server_srvz", roles: %w{app db web}
 
 
-config.assets.precompile += %w[active_admin.css active_admin.js]
+#config.assets.precompile += %w[active_admin.css active_admin.js]
 
 # role-based syntax
 # ==================
