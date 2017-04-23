@@ -61,6 +61,7 @@ GEM
       execjs
     bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
+    bcrypt-ruby (3.1.1.rc1-x86-mingw32)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -266,6 +267,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre4)
   autoprefixer-rails
+  bcrypt-ruby (= 3.1.1.rc1)
   bootstrap-sass (~> 3.3.6)
   bootswatch-rails
   byebug
@@ -280,6 +282,7 @@ DEPENDENCIES
   kaminari
   masonry-rails (~> 0.2.4)
   mocha
+  nokogiri
   paperclip (~> 5.0.0)
   pg
   puma (~> 3.0)

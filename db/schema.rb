@@ -96,6 +96,13 @@ ActiveRecord::Schema.define(version: 20170422113646) do
     t.datetime "image4_updated_at"
   end
 
+  create_table "galeries", force: :cascade do |t|
+    t.string   "uid"
+    t.datetime "created_at"
+    t.integer  "photosvideo_id"
+    t.index ["photosvideo_id"], name: "index_galeries_on_photosvideo_id", using: :btree
+  end
+
   create_table "photosvideos", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
