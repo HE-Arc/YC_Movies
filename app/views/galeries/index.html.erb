@@ -25,14 +25,14 @@
 						<% @categories.each do |c| %>
   						  <li class="" id="btn-filter<%= c.id %>">
    						  <%= link_to show_galery_path(category: c.id, type: params[:type]), remote: false, "data-category-id": c.id, class: "category-id" do %>
-    					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).where(category_id: c.id).count + Photosvideo.joins(:galeries).where(category_id: c.id).count  %></span> <%= c.name %>
+    					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).where(category_id: c.id).count + Photosvideo.joins(:videos).where(category_id: c.id).count  %></span> <%= c.name %>
                               <% end %>
                               </li>
                             <% end %>
 
 						<li class="active " id=btn-filterAll>
    						  <%= link_to show_galery_path(category: 'All', type: params[:type]), remote: false, "data-category-id": 'All', class: "category-id" do %>
-    					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).all.count + Photosvideo.joins(:galeries).all.count  %></span> Tous les thèmes
+    					      <span class="badge pull-right"><%= Photosvideo.joins(:pictures).all.count + Photosvideo.joins(:videos).all.count  %></span> Tous les thèmes
                               <% end %>
 						</li>
 

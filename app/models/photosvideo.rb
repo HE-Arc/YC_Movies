@@ -1,9 +1,9 @@
 class Photosvideo < ApplicationRecord
   has_many :pictures, :dependent => :delete_all
-  has_many :galeries, :dependent => :delete_all
+  has_many :videos, :dependent => :delete_all
   belongs_to :type
   belongs_to :category
-  accepts_nested_attributes_for :galeries, :pictures,:allow_destroy => true
+  accepts_nested_attributes_for :videos, :pictures,:allow_destroy => true
   before_create :validate_category_already_exist_create
   before_update :validate_category_already_exist_update
 

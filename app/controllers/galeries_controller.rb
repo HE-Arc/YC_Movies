@@ -5,13 +5,13 @@ class GaleriesController < ApplicationController
   @type     = params[:type]
 
   @pictures = media(Picture) if @type == "pictures"
-  @videos   = media(Galery) if @type == "videos"
+  @videos   = media(Video) if @type == "videos"
 
   @category = "All" if @category.blank?
   @type = "both" if @type.blank?
   if  @type == "both"
     @pictures = media(Picture)
-    @videos   = media(Galery) 
+    @videos   = media(Video) 
   end
 end
 

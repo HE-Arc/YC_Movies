@@ -1,4 +1,4 @@
-class Galery < ApplicationRecord
+class Video < ApplicationRecord
   belongs_to :photosvideo
   validate :validate_url
 	def media
