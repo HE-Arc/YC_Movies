@@ -4,14 +4,14 @@ class GaleriesController < ApplicationController
   @category = params[:category]
   @type     = params[:type]
 
-  @pictures = media(Picture) if @type == "pictures"
-  @videos   = media(Video) if @type == "videos"
+  @pictures = media(Picture).page(params[:picture_page]).per(6) if @type == "pictures"
+  @videos   = media(Video).page(params[:video_page]).per(6) if @type == "videos"
 
   @category = "All" if @category.blank?
   @type = "both" if @type.blank?
   if  @type == "both"
-    @pictures = media(Picture)
-    @videos   = media(Video) 
+    @pictures = media(Picture).page(params[:picture_page]).per(6)
+    @videos   = media(Video).page(params[:video_page]).per(6)
   end
 end
 

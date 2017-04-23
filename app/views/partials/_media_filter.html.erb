@@ -21,6 +21,11 @@
         <% end %>
     <% end %>
     <div class="col-md-60 text-center">
+        <% if medias.first.photosvideo.type.name == "Picture" %>
+          <%= paginate medias, :param_name => "picture_page" %>
+        <% elsif medias.first.photosvideo.type.name == "Video" %>
+          <%= paginate medias, :param_name => "video_page" %>
+        <% end %>
     </div>
     </div>
     <% end %>

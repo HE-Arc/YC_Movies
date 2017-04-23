@@ -277,6 +277,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks
+  kaminari
   masonry-rails (~> 0.2.4)
   mocha
   paperclip (~> 5.0.0)
