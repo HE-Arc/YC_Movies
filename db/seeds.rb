@@ -28,3 +28,12 @@ Carrousel.create({
   :image3_file_name => "carrousel_2_1520_550_000000.png",
   :image4_file_name => "carrousel_2_1920_624_000000.png"
 })
+
+Category.create({
+    :id => 5,
+    :name => "Creations",
+    :image1_file_name => "Theme_5_creations_736_200_000000.png",
+    :image2_file_name => "Theme_5_creations_640_200_000000.png",
+    :image3_file_name => "Theme_5_creations_288_200_000000.png",
+    :image4_file_name => "Theme_5_creations_992_200_000000.png"
+})
