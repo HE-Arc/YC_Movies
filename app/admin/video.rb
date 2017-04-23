@@ -41,7 +41,7 @@ form do |f|
         g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => ""}
       else
         if g.object.id
-          g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => "https://www.youtube.com/watch?v="+Galery.find(g.object.id).uid}
+          g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text, :input_html => { :value => "https://www.youtube.com/watch?v="+Video.find(g.object.id).uid}
         else
           g.input :uid, :label => "URL de la vidéo youtube : ",  :type => :text
         end
