@@ -5,15 +5,6 @@
 				<div class="col-md-18 col-lg-18" id="col-photo-video_id">
 					<div class="btn-group btn-group-md">
 
-
-						<!--<%= link_to show_images_path, :remote => true, :id => "btn-images", :class => "btn btn-default" do %>
-						  <em class="glyphicon glyphicon-picture"></em> Images
-						<% end %>
-
-						<%= link_to show_videos_path, :remote => true, :id => "btn-videos", :class => "btn btn-default" do %>
-						  <em class="glyphicon glyphicon-facetime-video"></em> Vidéos
-						<% end %> -->
-
 						<%= link_to show_galery_path(type: "pictures", category: params[:category]), remote: false, id: "btn-pictures", class: "btn btn-default" do %>
    					      <em class="glyphicon glyphicon-picture"></em> Pictures
 						<% end %>
@@ -26,31 +17,10 @@
 						  <em class="glyphicon glyphicon-duplicate"></em> Les 2
 						<% end %>
 
-
-
-
-						<!--<button id="btn-images" class="btn btn-default" type="button">
-							<em class="glyphicon glyphicon-picture"></em> Images
-						</button>
-						<button id="btn-videos" class="btn btn-default" type="button">
-							<em class="glyphicon glyphicon-facetime-video"></em> Vidéos
-						</button>
-						<button id="btn-both" class="btn btn-default active" type="button">
-							<em class="glyphicon glyphicon-duplicate"></em> Les 2
-						</button>-->
-
 					</div>
 				</div>
 				<div class="col-md-60 col-lg-42">
 					<ul class="nav nav-pills pull-right">
-
-						<!--<% @categories.each do |c| %>
-		  					<li class="" id=btn-filter<%=c.id%>>
-							  <%= link_to show_categories_path(:id => c.id), :remote => true do %>
-							  <span class="badge pull-right"><%= Photosvideo.joins(:pictures).where(category_id: c.id).count + Photosvideo.joins(:galeries).where(category_id: c.id).count  %></span> <%= c.name %>
-							  <% end %>
-							 </li>
-						<% end %>-->
 
 						<% @categories.each do |c| %>
   						  <li class="" id="btn-filter<%= c.id %>">
@@ -66,26 +36,6 @@
                               <% end %>
 						</li>
 
-
-
-				<!--		<li class="">
-							 <a href="#"> <span class="badge pull-right">12</span>Passion</a>
-						</li>
-						<li>
-							 <a href="#"> <span class="badge pull-right">4</span> Fête</a>
-						</li>
-		        <li class="">
-							 <a href="#"> <span class="badge pull-right">11</span> Commercial</a>
-						</li>
-						<li>
-							 <a href="#"> <span class="badge pull-right">6</span> Mariage</a>
-						</li>
-		        <li class="">
-							 <a href="#"> <span class="badge pull-right">20</span> Artistique</a>
-						</li>
-						<li class="active">
-							 <a href="#"> <span class="badge pull-right">53</span> Tous les thèmes</a>
-						</li>-->
 					</ul>
 				</div>
 			</div>
@@ -98,137 +48,10 @@
 <%= render partial: 'partials/media_filter', locals: { medias: @pictures} %>
 </div>
 <!--FIN-->
-		<!--
-    <div class="panel-body">
-			<div class="row">
-				<div class="infoonhover col-xs-30 col-sm-20 col-md-10">
-					<a id="modal-68614" href="#modal-container-68619" role="button" data-toggle="modal">
-						<img class="img-thumbnail img-responsive image" alt="Bootstrap Image Preview" src="<%= asset_path '400.jpg' %>" />
-						<div class="middle">
-							<div class="text">Great fabulouuuuuuus picture </div>
-						</div>
-					</a>
 
-				</div>
-				<div class="col-xs-30 col-sm-20 col-md-10">
-					<a id="modal-68615" href="#modal-container-68614" role="button" data-toggle="modal">
-						<img class="img-thumbnail img-responsive" alt="Bootstrap Image Preview" src="<%= asset_path '400_600.jpg' %>" />
-					</a>
-				</div>
-				<div class="col-xs-30 col-sm-20 col-md-10">
-					<a id="modal-68616" href="#modal-container-68614" role="button" data-toggle="modal">
-						<img class="img-thumbnail img-responsive" alt="Bootstrap Image Preview" src="<%= asset_path '600_400.jpg' %>" />
-					</a>
-				</div>
-				<div class="col-xs-30 col-sm-20 col-md-10">
-					<a id="modal-68617" href="#modal-container-68614" role="button" data-toggle="modal">
-						<img class="img-thumbnail img-responsive" alt="Bootstrap Image Preview" src="<%= asset_path '400_600.jpg' %>" />
-					</a>
-				</div>
-				<div class="col-xs-30 col-sm-20 col-md-10">
-					<a id="modal-68618" href="#modal-container-68614" role="button" data-toggle="modal">
-						<img class="img-thumbnail img-responsive" alt="Bootstrap Image Preview" src="<%= asset_path '1000.jpg' %>" />
-					</a>
-				</div>
-		    <div class="col-xs-30 col-sm-20 col-md-10">
-					<a id="modal-68619" href="#modal-container-68614" role="button" data-toggle="modal">
-						<img class="img-thumbnail img-responsive" alt="Bootstrap Image Preview" src="<%= asset_path '400.jpg' %>" />
-					</a>
-				</div>
-			</div>
-		  <div class="row">
-		    <div class="col-md-60 text-center">
-					<ul class="pagination">
-						<li>
-							<a href="#">Prev</a>
-						</li>
-						<li class="active">
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">Next</a>
-						</li>
-					</ul>
-				</div>
-
-			</div>
-
-		</div>
-  </div>
-
-  -->
-
+</div>
 </div>
 
 
 
-<div class="modal fade" id="modal-container-68614" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					×
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					Vidéo title
-				</h4>
-			</div>
-
-			<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
-			</div>
-
-			<!--<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">
-					Close
-				</button>
-			</div>-->
-		</div>
-
-	</div>
-
-</div>
-
-<div class="modal modal-lg fade" id="modal-container-68619" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					×
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					Image title
-				</h4>
-			</div>
-			<div class="modal-body">
-				<img class="img-responsive" alt="Bootstrap Image Preview" src="assets/400_600.jpg" />
-			</div>
-			<div class="modal-footer">
-
-				<button type="button" class="btn btn-default" data-dismiss="modal">
-					Close
-				</button>
-				<button type="button" class="btn btn-primary">
-					Save changes
-				</button>
-			</div>
-		</div>
-
-	</div>
-
-</div>
 <%= render partial: 'partials/galery', formats: [:js] %>
