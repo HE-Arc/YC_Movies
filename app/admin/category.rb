@@ -2,16 +2,39 @@ ActiveAdmin.register Category do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 
- permit_params :list, :of, :attributes, :on, :model
+# permit_params :list, :of, :attributes, :on, :model
 permit_params :name, :image1, :image2, :image3, :image4
 
 #or
 
- permit_params do
-   permitted = [:permitted, :attributes]
-   permitted << :other if params[:action] == 'create' && current_user.admin?
-   permitted
- end
+ #permit_params do
+ #  permitted = [:permitted, :attributes]
+ #  permitted << :other if params[:action] == 'create' && current_user.admin?
+ #  permitted
+ #end
+
+ show do |p| 
+    attributes_table do
+      row "Category name" do
+    	p.name
+      end
+      row "Image 750x350 filename" do
+    	p.image1_file_name
+      end
+       row "Image 1220x500 filename" do
+    	p.image2_file_name
+      end
+      row "Image 1520x550 filename" do
+    	p.image3_file_name
+      end
+      row "Image 1920x624 filename" do
+    	p.image4_file_name
+      end
+    end
+  active_admin_comments
+end
+
+
 index do |p| 
 	selectable_column
 	column :name

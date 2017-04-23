@@ -21,6 +21,24 @@ permit_params :image1, :image2, :image3, :image4
   actions
 end
 
+show do |p| 
+    attributes_table do
+      row "Image 750x350 filename" do
+    	p.image1_file_name
+      end
+       row "Image 1220x500 filename" do
+    	p.image2_file_name
+      end
+      row "Image 1520x550 filename" do
+    	p.image3_file_name
+      end
+      row "Image 1920x624 filename" do
+    	p.image4_file_name
+      end
+    end
+  active_admin_comments
+end
+
   form do |f|
     f.inputs "Ajouter une image" do
       f.input :image1, required: true, :label => "Image 750x350"

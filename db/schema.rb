@@ -96,13 +96,6 @@ ActiveRecord::Schema.define(version: 20170422113646) do
     t.datetime "image4_updated_at"
   end
 
-  create_table "galeries", force: :cascade do |t|
-    t.string   "uid"
-    t.datetime "created_at"
-    t.integer  "photosvideo_id"
-    t.index ["photosvideo_id"], name: "index_galeries_on_photosvideo_id", using: :btree
-  end
-
   create_table "photosvideos", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -144,7 +137,14 @@ ActiveRecord::Schema.define(version: 20170422113646) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "galeries", "photosvideos"
+  create_table "videos", force: :cascade do |t|
+    t.string   "uid"
+    t.datetime "created_at"
+    t.integer  "photosvideo_id"
+    t.index ["photosvideo_id"], name: "index_videos_on_photosvideo_id", using: :btree
+  end
+
   add_foreign_key "photosvideos", "types"
   add_foreign_key "pictures", "photosvideos"
+  add_foreign_key "videos", "photosvideos"
 end

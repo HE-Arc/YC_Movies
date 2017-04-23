@@ -26,6 +26,21 @@ ActiveAdmin.register Photosvideo, as: 'Picture' do
   actions
 end
 
+show do |p| 
+  attributes_table do
+    row :category
+    panel "Pictures" do
+      table_for p.pictures do
+        column do |c|
+          c.image_file_name
+        end     
+      end
+    end
+  end
+  active_admin_comments
+end
+
+
   form multipart: true do |f|
     f.inputs "Ajouter une image" do
       f.input :category
