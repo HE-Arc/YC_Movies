@@ -2,15 +2,10 @@ class PrestationOrdersController < ApplicationController
   before_action :set_prestation_order, only: [:show, :edit, :update, :destroy]
   before_action :set_headers, only: [:index, :show, :new, :edit]
 
-  # GET /prestation_orders
-  # GET /prestation_orders.json
-  def index
-    @prestation_orders = PrestationOrder.all
-  end
 
   # GET /prestation_orders/1
   # GET /prestation_orders/1.json
-  def show
+  def success
   end
 
   # GET /prestation_orders/new/step:step_number
@@ -39,9 +34,6 @@ class PrestationOrdersController < ApplicationController
 
   end
 
-  # GET /prestation_orders/1/edit
-  def edit
-  end
 
   # POST /prestation_orders
   # POST /prestation_orders.json
@@ -64,13 +56,15 @@ class PrestationOrdersController < ApplicationController
       session[:prestation_order_step] = @prestation_order.current_step
     elsif @prestation_order.valid?
       if @prestation_order.last_step?
-	    if Captcha.first.validate == true
+	      if Captcha.first.activate == true
           if verify_recaptcha(model: @prestation_order) && @prestation_order.save
             captcha_success = true
           end
-		else
-		  captcha_success = true
-		end		
+		    else
+          if @prestation_order.save
+            captcha_success = true
+          end
+		    end		
       else
         @prestation_order.next_step
         session[:prestation_order_step] = @prestation_order.current_step
@@ -83,6 +77,7 @@ class PrestationOrdersController < ApplicationController
     respond_to do |format|
       if @prestation_order.new_record?
         if valid
+          p "YOLOOOOOO"
           format.html { redirect_to action: :new, step_number: @prestation_order.current_step }
         else
           format.html { redirect_to action: :new, step_number: @prestation_order.current_step, has_error: true }
@@ -92,7 +87,7 @@ class PrestationOrdersController < ApplicationController
         if captcha_success
           #reset des informations car le formulaire a été enregistré (save)
           session[:prestation_order_step] = session[:prestation_order_params] = session[:max_step_reached] = nil
-          format.html { redirect_to @prestation_order, notice: 'Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais.' }
+          format.html { redirect_to show_prestation_success_path, notice: 'Votre demande de prestation a été soumise avec succès. Nous vous contacterons dans les plus bref délais.' }
           format.json { render :show, status: :created, location: @prestation_order }
         else
           format.html { redirect_to action: :new, step_number: @prestation_order.current_step, has_error: true }
@@ -104,29 +99,7 @@ class PrestationOrdersController < ApplicationController
 
   end
 
-  # PATCH/PUT /prestation_orders/1
-  # PATCH/PUT /prestation_orders/1.json
-  def update
-    respond_to do |format|
-      if @prestation_order.update(prestation_order_params)
-        format.html { redirect_to @prestation_order, notice: 'Prestation order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @prestation_order }
-      else
-        format.html { render :edit }
-        format.json { render json: @prestation_order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # DELETE /prestation_orders/1
-  # DELETE /prestation_orders/1.json
-  def destroy
-    @prestation_order.destroy
-    respond_to do |format|
-      format.html { redirect_to prestation_orders_url, notice: 'Prestation order was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
