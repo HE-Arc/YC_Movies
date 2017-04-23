@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20170422113646) do
     t.datetime "image4_updated_at"
   end
 
+
   create_table "photosvideos", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
