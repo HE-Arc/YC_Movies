@@ -15,6 +15,7 @@ class Video < ApplicationRecord
   YT_LINK_FORMAT = /\A.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*\z/i
   def validate_url
     uid = self.uid.match(YT_LINK_FORMAT)
+    # XXX même si l'url n'est pas valide, vous écrasez self.uid avec nil
     self.uid = uid[2] if uid && uid[2]
     if self.uid.to_s.length != 11
       self.errors.add(:uid, 'is invalid.')

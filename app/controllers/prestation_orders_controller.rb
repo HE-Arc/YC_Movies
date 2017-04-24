@@ -20,6 +20,7 @@ class PrestationOrdersController < ApplicationController
     end
 
     session[:prestation_order_params] ||= {}
+    # XXX 1993?
     session[:prestation_order_params][:length] ||= Time.new(1993, 02, 24, 0, 0, 0)
     @prestation_order = PrestationOrder.new(session[:prestation_order_params])
     @prestation_order.current_step = params[:step_number].to_i
@@ -77,6 +78,7 @@ class PrestationOrdersController < ApplicationController
     respond_to do |format|
       if @prestation_order.new_record?
         if valid
+          # XXX !? Ps de format.json?
           p "YOLOOOOOO"
           format.html { redirect_to action: :new, step_number: @prestation_order.current_step }
         else
