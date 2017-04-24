@@ -4,6 +4,8 @@ class GaleriesController < ApplicationController
   @category = params[:category]
   @type     = params[:type]
 
+
+  # XXX Ceci est en doublon plus bas, il n'y aurait pas plus simple?
   @pictures = media(Picture).page(params[:picture_page]).per(6) if @type == "pictures"
   @videos   = media(Video).page(params[:video_page]).per(6) if @type == "videos"
 

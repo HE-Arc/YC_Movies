@@ -17,6 +17,7 @@
 				<div class="carousel-inner">
 							<% @carrousels.each_with_index do |c, i| %>
 							<% if i == 0 %>
+                <%# XXX OMG! %>
 		  					<div class="item active">
 							  <%= image_tag(c.image1.url(:default), :class => "visible-xs-block" , :alt => "Carousel #{i}") %>
 							  <%= image_tag(c.image2.url(:default), :class => "visible-sm-block" , :alt => "Carousel #{i}") %>
@@ -61,6 +62,7 @@
 
 	<div class="row">
 
+    <%# XXX Du SQL dans la vue, yay! %>
 	 	<% Category.order('name ASC').each_with_index do |c, i| %>
 	 	<!-- <% md = (60/Category.count).to_i %>-->
 	 	  <% if i+1 == Category.count && Category.count % 2 != 0 %>
